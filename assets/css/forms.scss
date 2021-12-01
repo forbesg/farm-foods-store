@@ -1,0 +1,37 @@
+/** FORMS **/
+.form-group {
+  @apply flex flex-wrap items-center my-6;
+}
+.form-group > label {
+  @apply font-semibold text-sm flex-none w-auto pr-4;
+}
+.form-group > input:not([type='radio']),
+.form-group > select {
+  @apply font-normal bg-gray-200 flex-1 px-4 py-2 outline-none;
+}
+.form-group > input:not([type='radio']):active,
+.form-group > select:active {
+  @apply outline-none;
+}
+.form-group > input:not([type='radio']):focus-visible,
+.form-group > select:focus-visible {
+  @apply outline-none;
+}
+.form-group .quantity-input-wrapper input[type='number'] {
+  @apply bg-white flex-initial w-16 px-4 py-2 mx-1 text-center;
+}
+.form-group .quantity-input-wrapper input[type='number']:focus-visible {
+  @apply bg-gray-100 outline-none;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}

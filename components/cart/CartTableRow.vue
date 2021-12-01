@@ -1,26 +1,14 @@
 <template>
   <div class="cart-table--row">
-    <div
-      v-if="line.node.merchandise"
-      class="cart-items grid grid-cols-3 sm:grid-cols-4 md:gap-0 md:grid-cols-4"
-    >
-      <div
-        class="
-          image-container
-          p-2
-          md:py-6 md:px-4
-          w-full
-          h-auto
-          md:h-full md:col-span-1
-        "
-      >
+    <div v-if="line.node.merchandise" class="cart-item">
+      <div class="image-container">
         <img
           :src="line.node.merchandise.image.transformedSrc"
           :alt="line.node.merchandise.image.altText"
           class="w-full h-full object-cover"
         />
       </div>
-      <div class="product-details py-2 px-4 md:py-6 md:col-span-1">
+      <div class="product-details">
         <h2 class="font-semibold">
           {{ line.node.merchandise.title }}
         </h2>
@@ -34,7 +22,7 @@
           }}</span
         >
       </div>
-      <div class="product-quantity py-6 px-4 md:col-span-1 text-center">
+      <div class="product-quantity">
         <select
           class="bg-white border border-gray-400 p-2 text-center"
           name="quantity"
@@ -51,7 +39,7 @@
           <img src="~assets/icons/expand.svg" alt="Expand" />
         </select>
       </div>
-      <div class="remove-product py-6 px-4 text-right">
+      <div class="remove-product">
         <div
           class="inline-block cursor-pointer"
           @click="handleRemoveLineItem(line.node.id)"
@@ -74,4 +62,38 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.cart-table--row {
+  .cart-item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 50px;
+    grid-template-areas:
+      'image details details'
+      'image details details'
+      'quantity quantity remove';
+    @screen sm {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-areas:
+        'image details details quantity remove'
+        'image details details quantity remove';
+    }
+    > * {
+      @apply p-4;
+    }
+    .image-container {
+      grid-area: image;
+      @apply p-4;
+    }
+    .product-details {
+      grid-area: details;
+    }
+    .product-quantity {
+      grid-area: quantity;
+    }
+    .remove-product {
+      grid-area: remove;
+      @apply text-right;
+    }
+  }
+}
+</style>
