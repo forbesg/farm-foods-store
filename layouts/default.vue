@@ -74,8 +74,24 @@
         :quick-product="quickViewProduct"
       ></quick-view-product>
     </transition>
-    <footer class="h-48 mt-24">
-      <div class="container">The Footer</div>
+    <footer class="bg-orange-100 py-12 mt-24">
+      <div class="container">
+        <div class="">
+          <nav>
+            <nuxt-link to="/" class="block">Home</nuxt-link>
+            <nuxt-link to="/products" class="block">Products</nuxt-link>
+            <nuxt-link
+              v-for="page in pages"
+              :key="page.node.id"
+              :to="`/${page.node.handle}`"
+              class="block"
+              >{{ page.node.title }}</nuxt-link
+            >
+          </nav>
+        </div>
+        <div class=""></div>
+        <div class=""></div>
+      </div>
     </footer>
     <transition name="slideUp">
       <notification v-if="notification" :notification="notification" />

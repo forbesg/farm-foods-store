@@ -23,28 +23,35 @@
         >
       </div>
       <div class="product-quantity">
-        <select
-          class="bg-white border border-gray-400 p-2 text-center"
-          name="quantity"
-          @change="(e) => handleQuantityChange(e, line.node.id)"
-        >
-          <option
-            v-for="num in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-            :key="num"
-            :value="num"
-            :selected="line.node.quantity === num"
+        <div class="select-container">
+          <select
+            class="bg-white border border-gray-400 p-2 text-center"
+            name="quantity"
+            @change="(e) => handleQuantityChange(e, line.node.id)"
           >
-            {{ num }}
-          </option>
-          <img src="~assets/icons/expand.svg" alt="Expand" />
-        </select>
+            <option
+              v-for="num in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+              :key="num"
+              :value="num"
+              :selected="line.node.quantity === num"
+            >
+              {{ num }}
+            </option>
+          </select>
+        </div>
       </div>
       <div class="remove-product">
         <div
           class="inline-block cursor-pointer"
           @click="handleRemoveLineItem(line.node.id)"
         >
-          <img src="~assets/icons/close.svg" alt="Close" />
+          <img
+            v-if="removingItem"
+            src="~assets/icons/hourglass.svg"
+            alt="deleting item"
+            class="flip"
+          />
+          <img v-else src="~assets/icons/delete.svg" alt="delete" />
         </div>
       </div>
     </div>
@@ -59,6 +66,24 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      removingItem: false,
+    }
+  },
+  methods: {
+    handleQuantityChange(e, id) {
+      this.$store.dispatch('cart/updateCartLine', {
+        id,
+        newQuantity: parseInt(e.target.value, 10),
+      })
+    },
+    async handleRemoveLineItem(id) {
+      this.removingItem = true
+      await this.$store.dispatch('cart/removeFromCart', id)
+      this.removingItem = false
+    },
+  },
 }
 </script>
 
@@ -70,7 +95,7 @@ export default {
     grid-template-areas:
       'image details details'
       'image details details'
-      'quantity quantity remove';
+      '. quantity remove';
     @screen sm {
       grid-template-columns: repeat(5, 1fr);
       grid-template-areas:
@@ -89,10 +114,45 @@ export default {
     }
     .product-quantity {
       grid-area: quantity;
+      .select-container {
+        @apply relative bg-orange-50 bg-opacity-25;
+        &:after {
+          content: '';
+          background-image: url(~assets/icons/expand.svg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          @apply absolute right-0 top-0 transform translate-y-2 -translate-x-2 block h-4 w-4 z-0;
+        }
+        select {
+          @apply relative z-10 inline-block bg-transparent border-none w-full;
+          -webkit-appearance: none;
+          appearance: none;
+          padding: 0.25rem;
+          &:active,
+          &:focus-visible {
+            @apply outline-none;
+          }
+        }
+      }
     }
     .remove-product {
       grid-area: remove;
       @apply text-right;
+      @keyframes flip {
+        from {
+          transform: rotateX(0);
+        }
+        50% {
+          transform: rotateX(180deg);
+        }
+        to {
+          transform: rotateX(360deg);
+        }
+      }
+      img.flip {
+        animation: flip 2s linear infinite;
+      }
     }
   }
 }
