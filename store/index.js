@@ -1,4 +1,5 @@
 export const state = () => ({
+  pages: null,
   featuredProducts: null,
   showCart: false,
   notification: null,
@@ -6,6 +7,9 @@ export const state = () => ({
   quickViewProduct: null,
 })
 export const mutations = {
+  setPages(state, pages) {
+    state.pages = pages
+  },
   addFeaturedProducts(state, payload) {
     state.featuredProducts = payload
   },
@@ -26,7 +30,7 @@ export const actions = {
   async nuxtServerInit({ commit }, { $client }) {
     const query = `
       {
-        products(first: 5) {
+        products(first: 4) {
           edges {
             node {
               id
@@ -65,11 +69,28 @@ export const actions = {
         }
       }
     `
+    const pagesQuery = `
+      query {
+        pages(first: 10) {
+          edges {
+            node {
+              id
+              title
+              handle
+            }
+          }
+        }
+      }
+    `
+
     try {
-      const response = await $client(query)
+      const {
+        data: { pages },
+      } = await $client(pagesQuery).then((res) => res.json())
       const {
         data: { products },
-      } = await response.json()
+      } = await $client(query).then((res) => res.json())
+      commit('setPages', pages.edges)
       commit('addFeaturedProducts', products.edges)
     } catch (err) {
       // eslint-disable-nextline
@@ -89,6 +110,9 @@ export const actions = {
 }
 
 export const getters = {
+  pages(state) {
+    return state.pages
+  },
   featuredProducts(state) {
     return state.featuredProducts
   },

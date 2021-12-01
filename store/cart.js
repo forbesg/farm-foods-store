@@ -55,7 +55,7 @@ export const actions = {
                           title
                         }
                         image {
-                          transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 200)
+                          transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 300)
                           altText
                         }
                       }
@@ -138,7 +138,7 @@ export const actions = {
                           title
                         }
                         image {
-                          transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 200)
+                          transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 300)
                           altText
                         }
                       }
@@ -215,7 +215,7 @@ export const actions = {
                         title
                       }
                       image {
-                        transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 200)
+                        transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 300)
                         altText
                       }
                     }
@@ -292,7 +292,7 @@ export const actions = {
                         title
                       }
                       image {
-                        transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 200)
+                        transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 300)
                         altText
                       }
                     }

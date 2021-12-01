@@ -90,11 +90,41 @@
         </div>
       </div>
     </section>
+    <section>
+      <pre>
+        {{ collections }}
+      </pre>
+    </section>
   </div>
 </template>
 
 <script>
 export default {
+  async asyncData({ $client }) {
+    const collectionsQuery = `
+      query {
+        collections(first: 10, query: "tag: Homepage" ) {
+          edges {
+            node {
+              title
+              handle
+            }
+          }
+        }
+      }
+    `
+    const {
+      data: { collections },
+    } = await $client(collectionsQuery).then((res) => res.json())
+    return {
+      collections,
+    }
+  },
+  data() {
+    return {
+      collections: null,
+    }
+  },
   computed: {
     featuredProducts() {
       return this.$store.getters.featuredProducts

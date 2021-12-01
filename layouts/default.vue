@@ -18,6 +18,12 @@
         <nav class="flex items-center">
           <nuxt-link to="/">Home</nuxt-link>
           <nuxt-link to="/products">Products</nuxt-link>
+          <nuxt-link
+            v-for="page in pages"
+            :key="page.node.id"
+            :to="`/${page.node.handle}`"
+            >{{ page.node.title }}</nuxt-link
+          >
           <div class="icon-links ml-6">
             <nuxt-link to="/account" class="inline-block">
               <img src="~assets/icons/user.svg" alt="Account" />
@@ -60,6 +66,7 @@
         </transition>
       </div>
     </header>
+
     <Nuxt />
     <transition name="slideInRight">
       <quick-view-product
@@ -79,6 +86,9 @@
 <script>
 export default {
   computed: {
+    pages() {
+      return this.$store.getters.pages
+    },
     quickViewProduct() {
       return this.$store.getters.quickViewProduct
     },

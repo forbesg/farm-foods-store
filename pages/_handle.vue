@@ -3,7 +3,9 @@
     <div class="container">
       <main>
         <h1>{{ page.title }}</h1>
-        <div class="" v-html="page.body"></div>
+        <div v-html="page.body"></div>
+        <!-- Clear fix to handle potential floated elements from page.body -->
+        <div class="clearfix"></div>
       </main>
     </div>
   </div>
