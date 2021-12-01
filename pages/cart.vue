@@ -16,7 +16,7 @@
           class="grid md:grid-cols-3 md:grid-rows-1 md:gap-12"
         >
           <div class="md:col-span-2 divide-y divide-solid">
-            <div v-for="line in cart.lines.edges" :key="line.node.id">
+            <!-- <div v-for="line in cart.lines.edges" :key="line.node.id">
               <div
                 v-if="line.node.merchandise"
                 class="
@@ -32,7 +32,7 @@
                     p-2
                     md:py-6 md:px-4
                     w-full
-                    h-32
+                    h-auto
                     md:h-full md:col-span-1
                   "
                 >
@@ -42,7 +42,7 @@
                     class="w-full h-full object-cover"
                   />
                 </div>
-                <div class="product-details py-6 px-4 md:col-span-1">
+                <div class="product-details py-2 px-4 md:py-6 md:col-span-1">
                   <h2 class="font-semibold">
                     {{ line.node.merchandise.title }}
                   </h2>
@@ -86,7 +86,12 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div>-->
+            <cart-table-row
+              v-for="line in cart.lines.edges"
+              :key="line.node.id"
+              :line="line"
+            ></cart-table-row>
           </div>
           <div class="order-summary md:col-start-3 md:row-start-1">
             <div
@@ -158,15 +163,15 @@
 export default {
   data() {
     return {
-      // cart: null,
+      cart: null,
       errors: [],
     }
   },
-  computed: {
-    cart() {
-      return this.$store.getters['cart/cart'] || null
-    },
-  },
+  // computed: {
+  //   cart() {
+  //     return this.$store.getters['cart/cart'] || null
+  //   },
+  // },
   async fetch() {
     const query = `
       query ($id: ID!) {
@@ -234,6 +239,7 @@ export default {
       return
     }
     this.$store.commit('cart/updateCart', data.cart)
+    this.cart = data.cart
   },
   fetchOnServer: false,
   methods: {
