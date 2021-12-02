@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container my-24">
       <main>
         <h1>{{ page.title }}</h1>
-        <div v-html="page.body"></div>
+        <div class="page-body" v-html="page.body"></div>
         <!-- Clear fix to handle potential floated elements from page.body -->
         <div class="clearfix"></div>
       </main>
@@ -55,4 +55,14 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss">
+main {
+  h1 {
+    @apply text-4xl;
+  }
+  .page-body {
+    h2 {
+    }
+  }
+}
+</style>

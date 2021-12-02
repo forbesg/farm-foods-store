@@ -6,14 +6,14 @@ module.exports = {
       screens: {
         xl: '1280px',
       },
-      padding: '.75rem',
+      padding: '2rem',
     },
     rotate: {
       360: '360deg',
     },
     extend: {
       fontFamily: {
-        display: ['Poppins', 'sans-serif'],
+        display: ['Montserrat', 'sans-serif'],
       },
       colors: {
         orange: {
@@ -28,6 +28,19 @@ module.exports = {
           700: '#98440A',
           800: '#632C06',
           900: '#2F1503',
+        },
+        green: {
+          DEFAULT: '#103a32',
+          50: '#f3f5f5',
+          100: '#e7ebeb',
+          200: '#c3cecc',
+          300: '#9fb0ad',
+          400: '#587570',
+          500: '#103a32',
+          600: '#0e342d',
+          700: '#0c2c26',
+          800: '#0a231e',
+          900: '#081c19',
         },
       },
     },

@@ -1,22 +1,22 @@
 <template>
   <div
     class="
-      bg-gradient-to-br
-      from-orange-500
-      to-orange-400
+      bg-orange-50
       text-black
       cart
-      absolute
+      fixed
       top-0
       right-0
       transform
-      translate-y-24
+      -translate-x-4
+      translate-y-4
       p-6
       border border-gray-50 border-opacity-25
       w-full
       sm:w-2/3
       lg:w-1/2
       xl:w-2/5
+      z-10
     "
   >
     <div

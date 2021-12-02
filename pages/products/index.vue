@@ -1,11 +1,52 @@
 <template>
   <div>
-    <div class="">
+    <div>
       <div class="container my-12">
         <h1 class="font-display font-semibold text-5xl">Products</h1>
       </div>
-      <div class="container">
-        <feature
+      <div class="container my-24">
+        <div
+          class="
+            category-cards
+            grid
+            md:grid-cols-2
+            lg:grid-cols-3
+            xl:grid-cols-4
+            lg:gap-6
+          "
+        >
+          <div
+            v-for="(collection, index) in collections.edges"
+            :key="collection.node.id"
+            :image="collection.node.image ? collection.node.image : ''"
+            :index="index"
+            class="category-cards--card"
+          >
+            <div class="image-container">
+              <img
+                :src="collection.node.image.src"
+                alt="collection.node.image.altText"
+                width="296"
+                height="197"
+                loading="lazy"
+              />
+            </div>
+            <div class="text-container py-4">
+              <h2 class="text-2xl lg:text-2xl mb-4">
+                {{ collection.node.title }}
+              </h2>
+              <h3 class="text-base mb-8">
+                {{ collection.node.description }}
+              </h3>
+              <nuxt-link
+                :to="`/products/${collection.node.handle}`"
+                class="brand capitalize"
+                >View {{ collection.node.handle }}</nuxt-link
+              >
+            </div>
+          </div>
+        </div>
+        <!-- <feature
           v-for="(collection, index) in collections.edges"
           :key="collection.node.id"
           :image="collection.node.image ? collection.node.image : ''"
@@ -35,7 +76,7 @@
               >View {{ collection.node.handle }}</nuxt-link
             >
           </div>
-        </feature>
+        </feature> -->
       </div>
     </div>
   </div>

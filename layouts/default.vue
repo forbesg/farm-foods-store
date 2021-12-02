@@ -1,22 +1,38 @@
 <template id="layout">
-  <div class="relative">
-    <header class="sticky top-0 z-10 bg-white px-4">
-      <div
-        class="
-          container
-          bg-white
-          relative
-          mx-auto
-          flex
-          justify-between
-          items-center
-        "
+  <div class="relative main-container">
+    <header>
+      <button
+        type="button"
+        name="button"
+        class="absolute top-4 left-4 text lg:hidden"
+        @click="handleNav"
       >
-        <nuxt-link to="/" class="logo-container py-4">
-          <logo class="w-12 h-12 md:w-16 md:h-16" />
-        </nuxt-link>
-        <nav class="flex items-center">
-          <nuxt-link to="/">Home</nuxt-link>
+        <img
+          v-if="!navOpen"
+          src="~assets/icons/menu.svg"
+          alt="Menu"
+          aria-label="main menu"
+          width="32"
+          height="32"
+        />
+        <img
+          v-else
+          src="~assets/icons/close-white.svg"
+          alt="Menu"
+          aria-label="main menu"
+          width="32"
+          height="32"
+        />
+      </button>
+      <nuxt-link to="/" class="logo-container">
+        <logo />
+      </nuxt-link>
+      <div class="relative mx-auto" :class="[{ open: navOpen }]">
+        <div class="m-12 mb-6">
+          <hr />
+        </div>
+        <nav>
+          <nuxt-link to="/" class="home">Home</nuxt-link>
           <nuxt-link to="/products">Products</nuxt-link>
           <nuxt-link
             v-for="page in pages"
@@ -24,75 +40,77 @@
             :to="`/${page.node.handle}`"
             >{{ page.node.title }}</nuxt-link
           >
-          <div class="icon-links ml-6">
-            <nuxt-link to="/account" class="inline-block">
-              <img src="~assets/icons/user.svg" alt="Account" />
-            </nuxt-link>
-            <nuxt-link to="#search" class="inline-block">
-              <img src="~assets/icons/search.svg" alt="Search" />
-            </nuxt-link>
-            <span
-              to="#cart"
-              class="inline-block cursor-pointer relative"
-              @click="handleShowCart"
-            >
-              <img src="~assets/icons/cart.svg" alt="Shopping Cart" />
-              <span
-                v-if="cart && cart.lines && cart.lines.edges.length"
-                class="
-                  bg-orange bg-opacity-75
-                  flex
-                  justify-center
-                  items-center
-                  text-black
-                  w-5
-                  h-5
-                  rounded-full
-                  font-bold
-                  absolute
-                  top-0
-                  right-0
-                  transform
-                  -translate-y-1
-                  translate-x-1
-                "
-                >{{ cart.lines.edges.length }}</span
-              >
-            </span>
-          </div>
         </nav>
-        <transition name="cartFlip">
-          <cart v-if="cart && cart.lines.edges.length && showCart" />
-        </transition>
+        <div class="m-12 mt-6">
+          <hr />
+        </div>
+        <div class="icon-links">
+          <nuxt-link to="/account">
+            <img src="~assets/icons/user.svg" alt="Account" />
+          </nuxt-link>
+          <nuxt-link to="#search">
+            <img src="~assets/icons/search.svg" alt="Search" />
+          </nuxt-link>
+          <span to="#cart" @click="handleShowCart">
+            <img src="~assets/icons/cart.svg" alt="Shopping Cart" />
+            <span
+              v-if="cart && cart.lines && cart.lines.edges.length"
+              class="
+                bg-orange bg-opacity-75
+                flex
+                justify-center
+                items-center
+                text-black
+                w-5
+                h-5
+                rounded-full
+                font-bold
+                absolute
+                top-0
+                right-0
+                transform
+                -translate-y-1 -translate-x-1
+              "
+              >{{ cart.lines.edges.length }}</span
+            >
+          </span>
+        </div>
       </div>
     </header>
-
-    <Nuxt />
+    <div class="relative">
+      <div class="min-h-screen">
+        <Nuxt />
+      </div>
+      <transition name="cartFlip">
+        <cart v-if="cart && cart.lines.edges.length && showCart" />
+      </transition>
+      <footer>
+        <div class="container">
+          <div class="">
+            <nav>
+              <nuxt-link to="/" class="block">Home</nuxt-link>
+              <nuxt-link to="/products" class="block">Products</nuxt-link>
+              <nuxt-link
+                v-for="page in pages"
+                :key="page.node.id"
+                :to="`/${page.node.handle}`"
+                class="block"
+                >{{ page.node.title }}</nuxt-link
+              >
+            </nav>
+          </div>
+          <!-- <div class=""></div>
+          <div class=""></div> -->
+        </div>
+      </footer>
+    </div>
     <transition name="slideInRight">
       <quick-view-product
         v-if="quickViewProduct"
         :quick-product="quickViewProduct"
       ></quick-view-product>
     </transition>
-    <footer class="bg-orange-100 py-12 mt-24">
-      <div class="container">
-        <div class="">
-          <nav>
-            <nuxt-link to="/" class="block">Home</nuxt-link>
-            <nuxt-link to="/products" class="block">Products</nuxt-link>
-            <nuxt-link
-              v-for="page in pages"
-              :key="page.node.id"
-              :to="`/${page.node.handle}`"
-              class="block"
-              >{{ page.node.title }}</nuxt-link
-            >
-          </nav>
-        </div>
-        <div class=""></div>
-        <div class=""></div>
-      </div>
-    </footer>
+
     <transition name="slideUp">
       <notification v-if="notification" :notification="notification" />
     </transition>
@@ -101,6 +119,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      navOpen: false,
+    }
+  },
   computed: {
     pages() {
       return this.$store.getters.pages
@@ -122,6 +145,7 @@ export default {
     $route(newRoute, oldRoute) {
       if (newRoute.path !== oldRoute.path) {
         this.$store.commit('setShowCart', false)
+        this.navOpen = false
       }
     },
   },
@@ -250,9 +274,68 @@ export default {
     }
   },
   methods: {
+    handleNav() {
+      this.navOpen = !this.navOpen
+    },
     handleShowCart() {
       this.$store.commit('setShowCart', !this.showCart)
     },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.main-container {
+  display: grid;
+  position: relative;
+  @apply min-h-screen;
+  header {
+    @apply bg-green-800 sticky top-0 text-white z-10;
+    .logo-container {
+      @apply block w-20 h-20 py-4 mx-auto;
+      svg {
+        @apply block w-auto h-full mx-auto;
+      }
+    }
+    > div {
+      @apply fixed inset-0 top-20 transform -translate-x-full bg-green-800;
+      &.open {
+        @apply translate-x-0;
+      }
+      nav {
+        a {
+          @apply block text-center text-gray-300 hover:text-white transition-colors duration-500 p-4;
+          &.nuxt-link-exact-active {
+            @apply text-orange font-bold;
+          }
+        }
+      }
+      .icon-links {
+        @apply flex justify-center mx-auto;
+        > a,
+        > span {
+          @apply inline-block cursor-pointer relative px-4;
+        }
+      }
+    }
+    hr {
+      @apply border-orange;
+    }
+  }
+  @screen lg {
+    grid-template-columns: 340px 1fr;
+    header {
+      @apply bg-green-800 sticky top-0 text-white p-16;
+      .logo-container {
+        @apply block w-32 h-32 py-0;
+      }
+      > div {
+        @apply sticky top-0 transform-none;
+      }
+    }
+  }
+  footer {
+    @apply bg-green-900 text-white py-12 mt-24;
+  }
+}
+</style>

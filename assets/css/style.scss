@@ -1,3 +1,7 @@
+:root {
+  --color-racing-green: 0, 66, 37;
+  --color-racing-green: 16, 58, 50;
+}
 html,
 body {
   height: 100%;
@@ -21,10 +25,6 @@ body {
     transform: translateX(-0.5rem) translateY(-0.5rem) rotate(360deg);
     transform-origin: center;
   }
-}
-
-header nav > * {
-  @apply py-1 px-1 font-semibold sm:px-2;
 }
 
 a.brand {
@@ -104,19 +104,19 @@ a.button.loading:after {
 
 .cartFlip-enter,
 .cartFlip-leave-to {
-  top: 6rem;
+  top: 1rem;
+  right: 1rem;
   transform: translateY(-100vh);
   transform-origin: top;
   transition: all 500ms ease-in-out;
-  z-index: -1;
 }
 .cartFlip-enter-to,
 .cartFlip-leave {
-  top: 6rem;
+  top: 1rem;
+  right: 1rem;
   transform: translateY(0vh);
   transform-origin: top;
   transition: all 500ms ease-in-out;
-  z-index: -1;
 }
 
 /** VUE Transitions **/

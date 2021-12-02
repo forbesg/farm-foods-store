@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="py-24">
     <div class="container grid md:grid-cols-2 md:mt-12">
       <div class="image-container">
         <img

@@ -1,12 +1,11 @@
 <template>
   <div class="">
-    <div class="hero relative max-h-2/3 overflow-hidden">
+    <div class="hero relative min-h-screen overflow-hidden">
       <div
         class="
           overlay
           absolute
           inset-0
-          bg-black bg-opacity-50
           text-white
           md:flex
           justify-start
@@ -36,26 +35,38 @@
                 md:p-12
               "
             >
-              <logo class="w-24 h-24 md:w-48 md:h-48"></logo>
-              <div class="flex flex-col mt-6">
+              <div class="flex flex-col flex-0 mt-6 max-w-xl">
                 <h1
                   class="
                     brand-shadow
-                    text-4xl
-                    md:text-6xl
-                    font-display font-semibold
+                    text-4xl text-orange-400
+                    md:text-sm
+                    mb-4
+                    font-semibold
                   "
                 >
-                  From Farm To Door
+                  From Farm <span class="text-white">2</span> Door
                 </h1>
-                <div class="brand-box my-6">
-                  <h2 class="text-base md:text-xl font-semibold">
-                    Locally Grown Food Delivery Service
-                  </h2>
-                  <nuxt-link to="/products" class="button text-white mt-4"
-                    >View Our Produce</nuxt-link
+                <h2 class="text-xl mb-4 md:text-4xl font-display font-semibold">
+                  Locally Grown Food Delivery Service
+                </h2>
+                <h3>Great Produce Without the Footprint</h3>
+                <p class="text-lg mb-4">
+                  The best local farmers supply freshly produced and locally
+                  grown produce straight to your door. Better quality produce
+                  with a lower carbon footprint.
+                </p>
+                <div class="flex items-center mt-4">
+                  <nuxt-link to="/products" class="button text-white text-xl"
+                    >Start Shopping</nuxt-link
+                  >
+                  <nuxt-link to="/our-suppliers" class="button text ml-6"
+                    >View Our Suppliers</nuxt-link
                   >
                 </div>
+              </div>
+              <div class="p-12">
+                <logo class="w-24 h-24 md:w-48 md:h-48"></logo>
               </div>
             </div>
           </div>
@@ -133,19 +144,19 @@ export default {
 }
 </script>
 
-<style media="screen">
+<style lang="scss" media="screen">
 .brand-shadow {
   text-shadow: 0.035em 0.035em 0 #000;
-}
-.brand-box {
-  @apply inline-block bg-white bg-opacity-75 text-orange p-6 text-center;
-  backdrop-filter: blur(3px);
 }
 .hero {
   background-image: url(/food-banner.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-height: calc(70vh - 6rem);
+  background-attachment: fixed;
+  .overlay {
+    // background-color: rgba(var(--color-racing-green), 0.25);
+    background-color: rgba(#000, 0.5);
+  }
 }
 </style>

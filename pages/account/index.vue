@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="py-24">
     <div class="container">
       <div v-if="user" class="grid">
         <div class="">
