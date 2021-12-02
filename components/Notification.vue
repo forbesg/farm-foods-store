@@ -17,6 +17,6 @@ export default {
 
 <style scoped>
 .notification {
-  @apply fixed right-0 bottom-0 left-0 bg-orange-500 p-6 text-center;
+  @apply fixed right-0 bottom-0 left-0 bg-orange-500 p-6 text-center z-20;
 }
 </style>

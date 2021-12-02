@@ -7,12 +7,12 @@
         </div>
       </div>
     </div> -->
-    <div class="container mt-12 mb-24 title-content">
-      <h1 class="font-display font-semibold text-5xl">
+    <div class="container my-12 title-content">
+      <h1 class="font-display font-semibold text-3xl lg:5xl">
         {{ collection.title }}
       </h1>
     </div>
-    <div class="my-24">
+    <div class="">
       <div class="container">
         <div class="grid gap-6 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           <product-card

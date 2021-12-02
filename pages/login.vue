@@ -1,45 +1,63 @@
 <template>
   <div>
-    <div class="container">
-      <h1>Create An Account</h1>
-      <div class="">
+    <div class="container my-12">
+      <div class="max-w-lg mx-auto">
         <form
-          class="border border-gray-100 p-12 max-w-lg mx-auto"
+          class="
+            border border-gray-100
+            bg-gradient-to-br
+            from-green
+            to-green-400
+            text-white
+            p-12
+            max-w-lg
+            mx-auto
+          "
           action="index.html"
           method="post"
           @submit.prevent="handleLogin"
         >
+          <img
+            src="~assets/images/logo.svg"
+            alt="Logo"
+            class="w-20 h-20 mb-6 mx-auto"
+          />
+          <h1 class="text-2xl text-center font-medium mb-12">
+            Login to your account
+          </h1>
           <div class="form-group">
-            <label for="email">Email</label>
             <input
               id="email"
               type="email"
               name="email"
-              autocomplete="username"
               v-model="loginForm.email"
+              autocomplete="username"
             />
+            <label for="email">Email</label>
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
             <input
               id="password"
               type="password"
               name="password"
-              autocomplete="current-password"
               v-model="loginForm.password"
+              autocomplete="current-password"
             />
+            <label for="password">Password</label>
           </div>
           <button type="submit" :class="[{ loading: loading }]" class="w-full">
-            Submit
+            Login
           </button>
+          <div v-if="error" class="text-red-400 mt-4">
+            <span>{{ error }}</span>
+          </div>
           <div class="form-group w-full">
-            <!-- <input
-              id="submit"
-              type="submit"
-              name="submit"
-              value="Submit"
-              class="button"
-            /> -->
+            <span class="block"
+              >No account yet.
+              <nuxt-link to="/register" class="text-orange font-semibold"
+                >Register Here</nuxt-link
+              ></span
+            >
           </div>
         </form>
       </div>
@@ -73,6 +91,7 @@ const customerQuery = `
   }
 `
 export default {
+  middleware: ['signedInUser'],
   data() {
     return {
       loginForm: {
@@ -83,11 +102,24 @@ export default {
       loading: false,
     }
   },
+  computed: {
+    user() {
+      return this.$store.getters.user
+    },
+  },
+  watch: {
+    user(value) {
+      if (value) {
+        this.$router.replace('/account')
+      }
+    },
+  },
   methods: {
     async handleLogin() {
       this.loading = true
       const { loginForm } = this
       if (!loginForm.email || !loginForm.password) {
+        this.loading = false
         return (this.error = 'Both email and password are required')
       }
 

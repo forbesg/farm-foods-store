@@ -10,7 +10,7 @@
         />
       </div>
       <div class="product-detail py-4 lg:p-6">
-        <h1 class="font-display text-4xl mb-4">{{ product.title }}</h1>
+        <h1 class="font-semibold text-3xl mb-4">{{ product.title }}</h1>
         <div v-html="product.descriptionHtml"></div>
         <add-to-cart :product="product"></add-to-cart>
       </div>

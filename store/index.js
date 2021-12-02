@@ -3,6 +3,10 @@ export const state = () => ({
   featuredProducts: null,
   showCart: false,
   notification: null,
+  // notification: {
+  //   style: '',
+  //   message: 'This is a notification message',
+  // },
   user: null,
   quickViewProduct: null,
 })

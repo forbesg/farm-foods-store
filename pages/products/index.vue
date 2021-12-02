@@ -2,9 +2,9 @@
   <div>
     <div>
       <div class="container my-12">
-        <h1 class="font-display font-semibold text-5xl">Products</h1>
+        <h1 class="font-display font-semibold text-3xl lg:5xl">Products</h1>
       </div>
-      <div class="container my-24">
+      <div class="container">
         <div
           class="
             category-cards

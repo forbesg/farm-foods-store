@@ -51,8 +51,10 @@
                 >
                   Locally Grown Food Delivery Service
                 </h2>
-                <h3>Great Produce Without the Footprint</h3>
-                <p class="text-lg mb-4">
+                <h3 class="text-xl mb-4">
+                  Great Produce Without the Footprint
+                </h3>
+                <p class="mb-4">
                   The best local farmers supply freshly produced and locally
                   grown produce straight to your door. Better quality produce
                   with a lower carbon footprint.

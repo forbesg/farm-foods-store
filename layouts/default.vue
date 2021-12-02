@@ -25,9 +25,13 @@
         />
       </button>
       <nuxt-link to="/" class="logo-container">
-        <logo />
+        <!-- <logo /> -->
+        <img src="~assets/images/logo.svg" alt="" />
       </nuxt-link>
       <div class="relative mx-auto" :class="[{ open: navOpen }]">
+        <nuxt-link to="/" class="logo-container">
+          <logo />
+        </nuxt-link>
         <div class="m-12 mb-6">
           <hr />
         </div>
@@ -292,9 +296,10 @@ export default {
   @apply min-h-screen;
   header {
     @apply bg-green-800 sticky top-0 text-white z-10;
-    .logo-container {
+    > .logo-container {
       @apply block w-20 h-20 py-4 mx-auto;
-      svg {
+      svg,
+      img {
         @apply block w-auto h-full mx-auto;
       }
     }
@@ -302,6 +307,9 @@ export default {
       @apply fixed inset-0 top-20 transform -translate-x-full bg-green-800;
       &.open {
         @apply translate-x-0;
+      }
+      > .logo-container {
+        @apply hidden;
       }
       nav {
         a {
@@ -326,12 +334,18 @@ export default {
   @screen lg {
     grid-template-columns: 340px 1fr;
     header {
-      @apply bg-green-800 sticky top-0 text-white p-16;
-      .logo-container {
-        @apply block w-32 h-32 py-0;
+      @apply bg-green-800 sticky top-0 text-white;
+      > .logo-container {
+        @apply hidden;
       }
       > div {
-        @apply sticky top-0 transform-none;
+        @apply sticky top-0 transform-none p-12;
+        > .logo-container {
+          @apply block w-32 h-32 my-12 mx-auto;
+          svg {
+            @apply block w-auto h-full mx-auto;
+          }
+        }
       }
     }
   }
