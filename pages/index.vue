@@ -69,7 +69,10 @@
                 </div>
               </div>
               <div class="p-12">
-                <logo class="w-24 h-24 md:w-48 md:h-48"></logo>
+                <img
+                  src="~assets/images/logo.svg"
+                  class="w-48 h-48 md:w-96 md:h-96"
+                />
               </div>
             </div>
           </div>
