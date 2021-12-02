@@ -6,7 +6,10 @@ module.exports = {
       screens: {
         xl: '1280px',
       },
-      padding: '2rem',
+      padding: {
+        DEFAULT: '1rem',
+        lg: '2rem',
+      },
     },
     rotate: {
       360: '360deg',

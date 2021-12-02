@@ -8,8 +8,7 @@
       top-0
       right-0
       transform
-      -translate-x-4
-      translate-y-4
+      lg:-translate-x-4 lg:translate-y-4
       p-6
       border border-gray-50 border-opacity-25
       w-full

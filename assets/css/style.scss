@@ -104,19 +104,23 @@ a.button.loading:after {
 
 .cartFlip-enter,
 .cartFlip-leave-to {
-  top: 1rem;
-  right: 1rem;
   transform: translateY(-100vh);
   transform-origin: top;
   transition: all 500ms ease-in-out;
+  @screen lg {
+    top: 1rem;
+    right: 1rem;
+  }
 }
 .cartFlip-enter-to,
 .cartFlip-leave {
-  top: 1rem;
-  right: 1rem;
   transform: translateY(0vh);
   transform-origin: top;
   transition: all 500ms ease-in-out;
+  @screen lg {
+    top: 1rem;
+    right: 1rem;
+  }
 }
 
 /** VUE Transitions **/

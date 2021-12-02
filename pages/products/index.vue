@@ -8,8 +8,8 @@
         <div
           class="
             category-cards
-            grid
-            md:grid-cols-2
+            grid grid-cols-2
+            gap-4
             lg:grid-cols-3
             xl:grid-cols-4
             lg:gap-6

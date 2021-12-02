@@ -1,5 +1,5 @@
 <template>
-  <div class="py-24">
+  <div class="py-4 lg:py-24">
     <div class="container grid md:grid-cols-2 md:mt-12">
       <div class="image-container">
         <img
@@ -9,7 +9,7 @@
           height="800"
         />
       </div>
-      <div class="product-detail p-6">
+      <div class="product-detail py-4 lg:p-6">
         <h1 class="font-display text-4xl mb-4">{{ product.title }}</h1>
         <div v-html="product.descriptionHtml"></div>
         <add-to-cart :product="product"></add-to-cart>

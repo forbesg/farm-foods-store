@@ -39,15 +39,16 @@
                 <h1
                   class="
                     brand-shadow
-                    text-4xl text-orange-400
-                    md:text-sm
+                    text-orange-400 text-sm
                     mb-4
                     font-semibold
                   "
                 >
                   From Farm <span class="text-white">2</span> Door
                 </h1>
-                <h2 class="text-xl mb-4 md:text-4xl font-display font-semibold">
+                <h2
+                  class="text-3xl mb-4 md:text-4xl font-display font-semibold"
+                >
                   Locally Grown Food Delivery Service
                 </h2>
                 <h3>Great Produce Without the Footprint</h3>
@@ -153,7 +154,9 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  @screen lg {
+    background-attachment: fixed;
+  }
   .overlay {
     // background-color: rgba(var(--color-racing-green), 0.25);
     background-color: rgba(#000, 0.5);

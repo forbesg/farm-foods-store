@@ -279,6 +279,7 @@ export default {
     },
     handleShowCart() {
       this.$store.commit('setShowCart', !this.showCart)
+      this.navOpen = false
     },
   },
 }

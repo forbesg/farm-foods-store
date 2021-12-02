@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container my-24">
+    <div class="container lg:my-24">
       <main>
         <h1>{{ page.title }}</h1>
         <div class="page-body" v-html="page.body"></div>
