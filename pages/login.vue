@@ -87,6 +87,13 @@ const customerQuery = `
       id
       displayName
       email
+      orders(first: 10) {
+        edges {
+          node {
+            id
+          }
+        }
+      }
     }
   }
 `
