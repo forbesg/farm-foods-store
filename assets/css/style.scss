@@ -107,9 +107,10 @@ a.button.loading:after {
   @apply inline-block
     w-12
     h-12
-    border-4 border-orange-50 border-r-orange-500
+    border-4 border-orange-50
     rounded-full
     animate-spin;
+  border-right-color: #f17621; // Force this as tailwind style was being purged??
 }
 
 .cartFlip-enter,
