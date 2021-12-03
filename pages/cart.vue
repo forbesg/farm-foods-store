@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="container">
-      <h1 class="my-12 text-4xl font-semibold">Your Shopping Cart</h1>
+      <h1 class="my-12 text-3xl font-display font-semibold">
+        Your Shopping Cart
+      </h1>
       <div
         v-if="$fetchState.pending"
         class="h-72 flex justify-center items-center"
@@ -24,13 +26,7 @@
           </div>
           <div class="order-summary md:col-start-3 md:row-start-1">
             <div
-              class="
-                order-summary-inner
-                sticky
-                top-32
-                bg-orange-50 bg-opacity-25
-                p-6
-              "
+              class="order-summary-inner sticky top-32 bg-orange-50 bg-opacity-25 p-6"
             >
               <h2 class="text-xl font-semibold mb-6">Order Summary</h2>
               <div class="divide-y divide-solid">
@@ -51,14 +47,7 @@
                   >
                 </div>
                 <div
-                  class="
-                    flex
-                    justify-between
-                    items-center
-                    font-semibold
-                    text-lg
-                    py-4
-                  "
+                  class="flex justify-between items-center font-semibold text-lg py-4"
                 >
                   <span>Total:</span
                   ><span
