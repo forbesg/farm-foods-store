@@ -6,14 +6,7 @@
       </div>
       <div class="container">
         <div
-          class="
-            category-cards
-            grid grid-cols-2
-            gap-4
-            lg:grid-cols-3
-            xl:grid-cols-4
-            lg:gap-6
-          "
+          class="category-cards grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6"
         >
           <div
             v-for="(collection, index) in collections.edges"
@@ -24,10 +17,11 @@
           >
             <div class="image-container">
               <img
-                :src="collection.node.image.src"
+                :src="collection.node.image.transformedSrc"
                 alt="collection.node.image.altText"
                 width="296"
                 height="197"
+                class="w-full h-full"
                 loading="lazy"
               />
             </div>
@@ -93,8 +87,8 @@ const collectionQuery = `
           description
           handle
           image {
-            src
             transformedSrc(crop: CENTER, maxHeight: 400, maxWidth: 600)
+            altText
           }
           products(first: 5) {
             edges {
