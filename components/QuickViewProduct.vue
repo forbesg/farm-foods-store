@@ -24,6 +24,12 @@
 
 <script>
 export default {
+  props: {
+    quickProduct: {
+      required: true,
+      type: Object,
+    },
+  },
   data() {
     return {
       product: null,
@@ -32,12 +38,6 @@ export default {
         quantity: 1,
       },
     }
-  },
-  props: {
-    quickProduct: {
-      required: true,
-      type: Object,
-    },
   },
   async fetch() {
     const query = `
@@ -77,7 +77,14 @@ export default {
       res.json()
     )
     if (errors) {
-      errors.forEach((err) => console.log(err.massage))
+      errors.forEach((err) => {
+        // eslint-disable-next-line
+        console.log(err.message)
+      })
+      this.$store.dispatch('setQuickViewProduct', null)
+      this.$store.dispatch('setNotification', {
+        message: 'There was a problem retrieving product data',
+      })
     }
     this.product = data.product
   },
@@ -86,7 +93,7 @@ export default {
 
 <style scoped>
 .quick-view {
-  @apply fixed inset-0 bg-black bg-opacity-25 z-10;
+  @apply fixed inset-0 bg-black bg-opacity-25 z-30;
   backdrop-filter: blur(0.5rem);
 }
 .quick-view .inner-wrapper {

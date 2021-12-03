@@ -3,16 +3,7 @@
     <div class="container my-12">
       <div class="max-w-lg mx-auto">
         <form
-          class="
-            border border-gray-100
-            bg-gradient-to-br
-            from-green
-            to-green-400
-            text-white
-            p-12
-            max-w-lg
-            mx-auto
-          "
+          class="border border-gray-100 bg-gradient-to-br from-green to-green-400 text-white p-12 max-w-lg mx-auto"
           action="index.html"
           method="post"
           @submit.prevent="handleLogin"

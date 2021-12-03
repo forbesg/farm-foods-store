@@ -1,20 +1,19 @@
 <template>
   <div>
-    <div class="container lg:my-24">
-      <main>
+    <main class="container">
+      <div class="lg:my-12">
         <h1>{{ page.title }}</h1>
         <div class="page-body" v-html="page.body"></div>
         <!-- Clear fix to handle potential floated elements from page.body -->
         <div class="clearfix"></div>
-      </main>
-    </div>
+      </div>
+    </main>
   </div>
 </template>
 
 <script>
 export default {
-  async asyncData({ app, params: { handle }, $client, error }) {
-    console.log(app)
+  async asyncData({ params: { handle }, $client, error }) {
     const handleQuery = `
       query($handle: String!) {
         page(handle: $handle) {
@@ -38,7 +37,6 @@ export default {
       if (!page) {
         throw new Error('Page not found')
       }
-      console.log(page)
       return {
         page,
       }
@@ -58,10 +56,14 @@ export default {
 <style lang="scss">
 main {
   h1 {
-    @apply text-4xl;
+    @apply font-display font-semibold text-3xl mb-6;
   }
   .page-body {
     h2 {
+      @apply font-semibold;
+    }
+    p {
+      @apply my-4;
     }
   }
 }

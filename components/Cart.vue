@@ -1,43 +1,9 @@
 <template>
   <div
-    class="
-      bg-orange-50
-      text-black
-      cart
-      fixed
-      top-0
-      right-0
-      transform
-      lg:-translate-x-4 lg:translate-y-4
-      p-6
-      border border-gray-50 border-opacity-25
-      w-full
-      sm:w-2/3
-      lg:w-1/2
-      xl:w-2/5
-      2xl:w-1/4
-      z-10
-    "
+    class="bg-orange-50 text-black cart fixed top-0 right-0 transform translate-y-20 lg:-translate-x-4 lg:translate-y-4 p-6 border border-gray-50 border-opacity-25 w-full sm:w-2/3 lg:w-1/2 xl:w-2/5 2xl:w-1/4 z-10"
   >
     <div
-      class="
-        absolute
-        top-0
-        right-0
-        h-6
-        w-6
-        flex
-        justify-center
-        items-center
-        rounded-full
-        transform
-        -translate-x-6
-        translate-y-6
-        text-lg
-        close
-        cursor-pointer
-        hover:text-white
-      "
+      class="absolute top-0 right-0 h-6 w-6 flex justify-center items-center rounded-full transform -translate-x-6 translate-y-6 text-lg close cursor-pointer hover:text-white"
       @click="closeCart"
     >
       <svg
@@ -73,17 +39,7 @@
           />
         </button>
         <span
-          class="
-            inline-block
-            flex
-            items-center
-            justify-center
-            text-center
-            font-bold
-            p-1
-            w-6
-            h-6
-          "
+          class="inline-block flex items-center justify-center text-center font-bold p-1 w-6 h-6"
           >{{ item.node.quantity }}</span
         >
         <button class="white p-1">

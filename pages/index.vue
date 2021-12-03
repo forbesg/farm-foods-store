@@ -1,48 +1,19 @@
 <template>
   <div class="">
-    <div class="hero relative min-h-screen overflow-hidden">
+    <div class="hero relative overflow-hidden">
       <div
-        class="
-          overlay
-          absolute
-          inset-0
-          text-white
-          md:flex
-          justify-start
-          items-center
-        "
+        class="overlay absolute inset-0 text-white md:flex justify-start items-center"
       >
         <div class="h-full md:container md:h-auto">
           <div
-            class="
-              mx-auto
-              h-full
-              bg-black bg-opacity-0
-              flex
-              items-center
-              md:inline-block md:h-auto md:flex-grow-0
-            "
+            class="mx-auto h-full bg-black bg-opacity-0 flex items-center md:inline-block md:h-auto md:flex-grow-0"
           >
             <div
-              class="
-                grid
-                md:flex
-                items-center
-                justify-center
-                text-overlay
-                inline-block
-                p-6
-                md:p-12
-              "
+              class="relative grid md:flex items-center justify-center text-overlay inline-block p-6 md:p-12"
             >
-              <div class="flex flex-col flex-0 mt-6 max-w-xl">
+              <div class="relative z-10 flex flex-col flex-0 max-w-xl">
                 <h1
-                  class="
-                    brand-shadow
-                    text-orange-400 text-sm
-                    mb-4
-                    font-semibold
-                  "
+                  class="brand-shadow text-orange-400 text-sm mb-4 font-semibold"
                 >
                   From Farm <span class="text-white">2</span> Door
                 </h1>
@@ -68,10 +39,12 @@
                   >
                 </div>
               </div>
-              <div class="p-12">
+              <div
+                class="absolute lg:relative p-12 z-0 opacity-25 lg:opacity-75"
+              >
                 <img
                   src="~assets/images/logo.svg"
-                  class="w-48 h-48 md:w-96 md:h-96"
+                  class="w-full h-full md:w-96 md:h-96"
                 />
               </div>
             </div>
@@ -87,16 +60,7 @@
           </h2>
         </div>
         <div
-          class="
-            container
-            products
-            grid grid-cols-1
-            gap-4
-            grid-cols-2
-            sm:grid-cols-3
-            md:grid-cols-4
-            2xl:grid-cols-4
-          "
+          class="container products grid grid-cols-1 gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-4"
         >
           <overlay-product-card
             v-for="product in featuredProducts"
@@ -159,11 +123,11 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  min-height: calc(100vh - var(--header-height));
   @screen lg {
-    background-attachment: fixed;
+    @apply min-h-screen bg-fixed;
   }
   .overlay {
-    // background-color: rgba(var(--color-racing-green), 0.25);
     background-color: rgba(#000, 0.5);
   }
 }

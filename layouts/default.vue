@@ -28,6 +28,25 @@
         <!-- <logo /> -->
         <img src="~assets/images/logo.svg" alt="" />
       </nuxt-link>
+      <button
+        type="button"
+        name="button"
+        class="text absolute top-4 right-4 text lg:hidden"
+        aria-label="main menu"
+        @click="handleShowCart"
+      >
+        <img
+          src="~assets/icons/cart.svg"
+          alt="Shopping Cart"
+          width="32"
+          height="32"
+        />
+        <span
+          v-if="cart && cart.lines && cart.lines.edges.length"
+          class="bg-orange bg-opacity-75 flex justify-center items-center text-black w-5 h-5 rounded-full font-bold absolute top-0 right-0 transform translate-y-2 -translate-x-3"
+          >{{ cart.lines.edges.length }}</span
+        >
+      </button>
       <div class="relative mx-auto" :class="[{ open: navOpen }]">
         <nuxt-link to="/" class="logo-container">
           <logo />
@@ -55,26 +74,11 @@
           <nuxt-link to="#search">
             <img src="~assets/icons/search.svg" alt="Search" />
           </nuxt-link>
-          <span to="#cart" @click="handleShowCart">
+          <span @click="handleShowCart">
             <img src="~assets/icons/cart.svg" alt="Shopping Cart" />
             <span
               v-if="cart && cart.lines && cart.lines.edges.length"
-              class="
-                bg-orange bg-opacity-75
-                flex
-                justify-center
-                items-center
-                text-black
-                w-5
-                h-5
-                rounded-full
-                font-bold
-                absolute
-                top-0
-                right-0
-                transform
-                -translate-y-1 -translate-x-1
-              "
+              class="bg-orange bg-opacity-75 flex justify-center items-center text-black w-5 h-5 rounded-full font-bold absolute top-0 right-0 transform -translate-y-1 -translate-x-1"
               >{{ cart.lines.edges.length }}</span
             >
           </span>
@@ -130,7 +134,8 @@ export default {
   },
   computed: {
     pages() {
-      return this.$store.getters.pages
+      const pages = this.$store.getters.pages
+      return pages
     },
     quickViewProduct() {
       return this.$store.getters.quickViewProduct
@@ -295,7 +300,7 @@ export default {
   position: relative;
   @apply min-h-screen;
   header {
-    @apply bg-green-800 sticky top-0 text-white z-10;
+    @apply bg-green-800 sticky top-0 text-white z-20;
     > .logo-container {
       @apply block w-20 h-20 py-4 mx-auto;
       svg,

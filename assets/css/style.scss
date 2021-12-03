@@ -1,6 +1,7 @@
 :root {
   --color-racing-green: 0, 66, 37;
   --color-racing-green: 16, 58, 50;
+  --header-height: 5rem;
 }
 html,
 body {
@@ -114,6 +115,7 @@ a.button.loading:after {
 }
 .cartFlip-enter-to,
 .cartFlip-leave {
+  top: 5rem;
   transform: translateY(0vh);
   transform-origin: top;
   transition: all 500ms ease-in-out;
