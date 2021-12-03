@@ -1,7 +1,7 @@
 <template>
   <div>
     <main class="container">
-      <div class="lg:my-12">
+      <div class="my-12">
         <h1>{{ page.title }}</h1>
         <div class="page-body" v-html="page.body"></div>
         <!-- Clear fix to handle potential floated elements from page.body -->
@@ -64,6 +64,12 @@ main {
     }
     p {
       @apply my-4;
+    }
+    img {
+      @apply w-full;
+      @screen md {
+        @apply w-auto;
+      }
     }
   }
 }

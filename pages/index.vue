@@ -59,15 +59,54 @@
             Featured Fresh Produce
           </h2>
         </div>
-        <div
-          class="container products grid grid-cols-1 gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-4"
+        <!-- <div
+          class="products w-screen overflow-x-scroll flex md:grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-4"
         >
           <overlay-product-card
             v-for="product in featuredProducts"
             :key="product.node.id"
             :product="product.node"
+            class="w-64"
           >
           </overlay-product-card>
+        </div> -->
+        <div class="w-screen lg:container">
+          <div
+            class="flex overflow-x-auto pb-10 hide-scroll-bar lg:overflow-visible"
+          >
+            <div
+              class="flex flex-nowrap space-x-4 lg:grid lg:grid-cols-4 lg:gap-4 lg:ml-0 lg:space-x-0 md:ml-20 ml-4"
+            >
+              <div
+                v-for="product in featuredProducts"
+                :key="product.node.id"
+                class="inline-block w-64 lg:w-full min-h-content"
+              >
+                <overlay-product-card
+                  :product="product.node"
+                  class="bg-white text-green-800 w-full max-w-xs"
+                >
+                  <div class="p-4">
+                    <h3 class="text-base font-semibold mb-2">
+                      {{ product.node.title }}
+                    </h3>
+                    <p class="text-sm">
+                      {{ product.node.description }}
+                    </p>
+                    <nuxt-link
+                      :to="`/products/${product.node.collections.edges[0].node.handle}/${product.node.handle}`"
+                      class="inline-block text text-xs font-semibold text-orange-500 mt-4"
+                      >View {{ product.node.title }}</nuxt-link
+                    >
+                  </div>
+                </overlay-product-card>
+                <!-- <div
+                  class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"
+                ></div> -->
+              </div>
+              <div class="block w-1 lg:hidden"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,11 +1,11 @@
 <template>
-  <div class="py-24">
-    <div class="container">
-      <h1 class="text-3xl">Your Account</h1>
+  <div class="">
+    <div class="container my-12">
+      <h1 class="text-3xl font-display font-semibold">Your Account</h1>
       <div v-if="user" class="grid lg:grid-cols-3 gap-12">
         <div class="">
           <div class="my-12">
-            <h2 class="text-lg mb-4">Customer Details</h2>
+            <h2 class="text-lg mb-4 font-semibold">Customer Details</h2>
             <p>Name: {{ user.displayName }}</p>
             <p>Email: {{ user.email }}</p>
             <p v-if="user.phone">Phone: {{ user.phone }}</p>
@@ -14,7 +14,7 @@
         </div>
         <div v-if="user.orders" class="lg:col-span-2">
           <div class="my-12">
-            <h2 class="text-lg mb-4">Your Orders</h2>
+            <h2 class="text-lg mb-4 font-semibold">Your Orders</h2>
             <div
               v-if="user.orders.edges && user.orders.edges.length"
               class=""
