@@ -16,34 +16,34 @@
           <h1 class="text-2xl text-center font-medium mb-12">
             Login to your account
           </h1>
-          <div class="form-group">
+          <div class="form-group green-label">
+            <label for="email">Email</label>
             <input
               id="email"
+              v-model="loginForm.email"
               type="email"
               name="email"
-              v-model="loginForm.email"
               autocomplete="username"
             />
-            <label for="email">Email</label>
           </div>
-          <div class="form-group">
+          <div class="form-group green-label">
+            <label for="password">Password</label>
             <input
               id="password"
+              v-model="loginForm.password"
               type="password"
               name="password"
-              v-model="loginForm.password"
               autocomplete="current-password"
             />
-            <label for="password">Password</label>
           </div>
-          <button type="submit" :class="[{ loading: loading }]" class="w-full">
-            Login
-          </button>
-          <div v-if="error" class="text-red-400 mt-4">
-            <span>{{ error }}</span>
-          </div>
-          <div class="form-group w-full">
-            <span class="block"
+          <div class="text-right">
+            <button type="submit" :class="[{ loading: loading }]" class="mr-0">
+              Login
+            </button>
+            <div v-if="error" class="text-white mt-4">
+              <span>{{ error }}</span>
+            </div>
+            <span class="block mt-4"
               >No account yet.
               <nuxt-link to="/register" class="text-orange font-semibold"
                 >Register Here</nuxt-link
@@ -135,7 +135,13 @@ export default {
 
       if (customerUserErrors && customerUserErrors.length) {
         this.loading = false
-        this.error = customerUserErrors[0].message
+        switch (customerUserErrors[0].code) {
+          case 'UNIDENTIFIED_CUSTOMER':
+            this.error = 'Email or password is incorrect.'
+            break
+          default:
+            this.error = 'Error logging in. Please check and try again.'
+        }
         return
       }
 
@@ -146,7 +152,6 @@ export default {
       }).then((res) => res.json())
 
       if (errors && errors.length) {
-        console.log(errors[0].message)
         this.error = errors[0].message
         return
       }
@@ -156,7 +161,7 @@ export default {
         'farmfoods:customer-accessToken',
         JSON.stringify(customerAccessToken)
       )
-      this.$router.replace('/account')
+      this.$router.push('/account')
     },
   },
 }

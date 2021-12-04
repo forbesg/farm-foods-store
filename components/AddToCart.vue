@@ -16,7 +16,13 @@
         <label
           :for="variant.node.title.split(' ').join('-').toLowerCase()"
           class="pl-4"
-          >{{ variant.node.title }}</label
+          >{{ variant.node.title }} -
+          <span class="text-sm text-gray-700"
+            >(£{{
+              parseFloat(variant.node.priceV2.amount).toFixed(2)
+            }}
+            each)</span
+          ></label
         >
       </div>
     </div>
@@ -77,15 +83,6 @@ export default {
       required: true,
     },
   },
-  computed: {
-    total() {
-      return (
-        (
-          this.order.quantity * this.order.variant?.node?.priceV2?.amount
-        ).toFixed(2) ?? 0
-      )
-    },
-  },
   data() {
     return {
       order: {
@@ -95,6 +92,15 @@ export default {
       error: null,
       loading: false,
     }
+  },
+  computed: {
+    total() {
+      return (
+        (
+          this.order.quantity * this.order.variant?.node?.priceV2?.amount
+        ).toFixed(2) ?? 0
+      )
+    },
   },
   methods: {
     updateQuantity(quantity) {

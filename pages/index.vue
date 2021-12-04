@@ -18,11 +18,11 @@
                   From Farm <span class="text-white">2</span> Door
                 </h1>
                 <h2
-                  class="text-3xl mb-4 md:text-4xl font-display font-semibold"
+                  class="text-3xl mb-4 md:text-4xl 2xl:text-5xl font-display font-semibold"
                 >
                   Locally Grown Food Delivery Service
                 </h2>
-                <h3 class="text-xl mb-4">
+                <h3 class="text-xl 2xl:text-2xl font-semibold mb-4">
                   Great Produce Without the Footprint
                 </h3>
                 <p class="mb-4">
@@ -59,20 +59,9 @@
             Featured Fresh Produce
           </h2>
         </div>
-        <!-- <div
-          class="products w-screen overflow-x-scroll flex md:grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-4"
-        >
-          <overlay-product-card
-            v-for="product in featuredProducts"
-            :key="product.node.id"
-            :product="product.node"
-            class="w-64"
-          >
-          </overlay-product-card>
-        </div> -->
         <div class="w-screen lg:container">
           <div
-            class="flex overflow-x-auto pb-10 hide-scroll-bar lg:overflow-visible"
+            class="flex overflow-x-auto pb-10 hide-scrollbars lg:overflow-visible"
           >
             <div
               class="flex flex-nowrap space-x-4 lg:grid lg:grid-cols-4 lg:gap-4 lg:ml-0 lg:space-x-0 md:ml-20 ml-4"

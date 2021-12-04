@@ -1,10 +1,7 @@
 /** FORMS **/
 .form-group {
-  @apply flex flex-wrap relative items-center my-6;
+  @apply flex flex-wrap items-center relative my-6 h-10;
 }
-// .form-group > label {
-//   @apply absolute left-2 font-semibold text-green opacity-50 text-sm flex-none w-auto px-2 py-1 transition-all duration-200;
-// }
 .form-group > input:not([type='radio']),
 .form-group > select {
   @apply font-normal text-black flex-1 px-4 py-2 outline-none;
@@ -17,12 +14,11 @@
 .form-group > select:focus-visible {
   @apply outline-none;
 }
-.form-group input:not([type='radio']) + label {
-  @apply absolute left-0 py-1 px-4 bg-gradient-to-b from-white via-white to-transparent text-orange font-semibold text-xs transform -translate-y-5 transition-all duration-200;
+.form-group.green-label > label {
+  @apply flex items-center justify-center w-24 bg-green text-orange text-xs font-semibold px-4 h-full;
 }
-// input:not([type='radio']):invalid + label {
-//   @apply opacity-0 bg-white text-orange font-semibold text-xs transform -translate-y-5 transition-all duration-200;
-// }
+.form-group.green-label > input:not([type='radio']) {
+}
 .form-group .quantity-input-wrapper input[type='number'] {
   @apply bg-white flex-initial w-16 px-4 py-2 mx-1 text-center;
 }

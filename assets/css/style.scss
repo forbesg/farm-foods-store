@@ -125,6 +125,14 @@ a.button.touch:active {
   border-right-color: #f17621; // Force this as tailwind style was being purged??
 }
 
+.hide-scrollbars {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .cartFlip-enter,
 .cartFlip-leave-to {
   transform: translateY(-100vh);

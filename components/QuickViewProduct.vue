@@ -3,7 +3,12 @@
     <div class="inner-wrapper" @click.stop>
       <div v-if="product">
         <div class="image-container">
-          <img :src="product.images.edges[0].node.transformedSrc" alt="" />
+          <img
+            :src="product.images.edges[0].node.transformedSrc"
+            alt=""
+            width="300"
+            height="200"
+          />
         </div>
         <h2 class="text-4xl mb-4">{{ product.title }}</h2>
         <p>{{ product.description }}</p>
@@ -11,6 +16,23 @@
           :product="product"
           @productAdded="$store.dispatch('setQuickViewProduct', null)"
         ></add-to-cart>
+        <div class="text-center">
+          <button
+            type="button"
+            name="button"
+            class="flex justify-center items-center text mx-auto my-4"
+            @click="$store.dispatch('setQuickViewProduct', null)"
+          >
+            <img
+              src="~assets/icons/close.svg"
+              alt="close icon"
+              width="20"
+              height="20"
+              class="mr-1"
+            />
+            Close
+          </button>
+        </div>
         <!-- <pre>
           {{ product }}
         </pre> -->
@@ -49,7 +71,7 @@ export default {
             edges {
               node {
                 id
-                transformedSrc(crop: CENTER, maxWidth: 300, maxHeight: 300)
+                transformedSrc(crop: CENTER, maxWidth: 300, maxHeight: 200)
                 altText
               }
             }
@@ -109,7 +131,7 @@ export default {
 
 .quick-view .inner-wrapper .image-container {
   @apply w-full h-auto mb-4;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
 }
 
 .quick-view .inner-wrapper .image-container img {
