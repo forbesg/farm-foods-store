@@ -1,6 +1,6 @@
 /** FORMS **/
 .form-group {
-  @apply flex flex-wrap items-center relative my-6 h-10;
+  @apply flex items-center relative my-6 h-10;
 }
 .form-group > input:not([type='radio']),
 .form-group > select {
