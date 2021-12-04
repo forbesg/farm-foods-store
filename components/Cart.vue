@@ -30,7 +30,7 @@
         {{ item.node.merchandise.title }}</span
       >
       <div class="bg-orange-50 flex items-center col-span-auto w-auto">
-        <button class="white p-1">
+        <button class="touch p-1">
           <img
             src="~assets/icons/remove.svg"
             alt="Decrement Quantity"
@@ -42,7 +42,7 @@
           class="inline-block flex items-center justify-center text-center font-bold p-1 w-6 h-6"
           >{{ item.node.quantity }}</span
         >
-        <button class="white p-1">
+        <button class="touch p-1">
           <img
             src="~assets/icons/add.svg"
             alt="Increment Quantity"
@@ -73,7 +73,7 @@
       <nuxt-link v-if="$route.path !== '/cart'" to="/cart" class="button text"
         >View Your Cart</nuxt-link
       >
-      <a :href="cart.checkoutUrl" class="button white">Checkout</a>
+      <a :href="cart.checkoutUrl" class="button">Checkout</a>
     </div>
   </div>
 </template>

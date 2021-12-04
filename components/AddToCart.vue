@@ -21,20 +21,14 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="quantity">Quantity:</label>
+      <label for="quantity" class="mr-4">Quantity:</label>
       <div
-        class="
-          quantity-input-wrapper
-          border border-gray-100
-          flex
-          justify-start
-          items-center
-        "
+        class="quantity-input-wrapper border border-gray-100 flex justify-start items-center"
       >
         <button
           type="button"
           name="button"
-          class="white"
+          class="touch"
           @click="updateQuantity(-1)"
         >
           <img src="~assets/icons/remove.svg" alt="Decrement quantity" />
@@ -50,7 +44,7 @@
         <button
           type="button"
           name="button"
-          class="white"
+          class="touch"
           @click="updateQuantity(1)"
         >
           <img src="~assets/icons/add.svg" alt="Increment quantity" />

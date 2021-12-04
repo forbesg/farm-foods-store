@@ -69,7 +69,7 @@ a.button.white {
 }
 button.white:hover,
 a.button.white:hover {
-  @apply bg-orange-100;
+  // @apply bg-orange-100;
 }
 button.white:active,
 a.button.white:active {
@@ -101,6 +101,18 @@ a.button.loading:after {
   @apply absolute top-1/2 left-1/2 transform w-4 h-4 border-2 border-black rounded-full;
   border-right-color: transparent;
   animation: infinteSpin 500ms linear infinite;
+}
+button.touch,
+a.button.touch {
+  @apply bg-none bg-white shadow-none transition-colors duration-200;
+}
+// button.touch:hover,
+// a.button.touch:hover {
+//   // @apply bg-orange-100;
+// }
+button.touch:active,
+a.button.touch:active {
+  @apply bg-orange-500;
 }
 
 .loader {
