@@ -1,15 +1,22 @@
 <template>
   <div>
-    <div class="container">
-      <h1>Create An Account</h1>
-      <div class="">
+    <div class="container my-12">
+      <div class="w-auto sm:max-w-lg mx-auto">
         <form
-          class="border border-gray-100 p-12 max-w-lg mx-auto"
+          class="green-gradient"
           action="index.html"
           method="post"
           @submit.prevent="handleRegistration"
         >
-          <div class="form-group">
+          <img
+            src="~assets/images/logo.svg"
+            alt="Logo"
+            class="w-20 h-20 mb-6 mx-auto"
+          />
+          <h1 class="text-2xl text-center font-medium mb-12">
+            Create an account
+          </h1>
+          <div class="form-group green-label">
             <label for="firstName">First Name</label>
             <input
               id="firstName"
@@ -18,7 +25,7 @@
               v-model="registerForm.firstName"
             />
           </div>
-          <div class="form-group">
+          <div class="form-group green-label">
             <label for="lastName">Last Name</label>
             <input
               id="lastName"
@@ -27,7 +34,7 @@
               v-model="registerForm.lastName"
             />
           </div>
-          <div class="form-group">
+          <div class="form-group green-label">
             <label for="email">Email</label>
             <input
               id="email"
@@ -36,7 +43,7 @@
               v-model="registerForm.email"
             />
           </div>
-          <div class="form-group">
+          <div class="form-group green-label">
             <label for="password">Password</label>
             <input
               id="password"
@@ -46,7 +53,7 @@
               v-model="registerForm.password"
             />
           </div>
-          <div class="form-group">
+          <div class="form-group green-label">
             <label for="confirmPassword">Confirm Password</label>
             <input
               id="confirmPassword"
@@ -56,12 +63,24 @@
               v-model="registerForm.confirmPassword"
             />
           </div>
-          <div v-if="error" class="">
-            {{ error }}
+          <div class="text-right">
+            <button
+              type="submit"
+              :class="[{ loading: loading }]"
+              class="w-full"
+            >
+              Submit
+            </button>
+            <div v-if="error" class="mt-4">
+              {{ error }}
+            </div>
+            <span class="block mt-4 text-sm"
+              >Already have an account.
+              <nuxt-link to="/login" class="text-orange font-semibold"
+                >Login Here</nuxt-link
+              ></span
+            >
           </div>
-          <button type="submit" :class="[{ loading: loading }]" class="w-full">
-            Submit
-          </button>
         </form>
       </div>
     </div>

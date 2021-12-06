@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="container my-12">
-      <div class="max-w-lg mx-auto">
+      <div class="w-auto sm:max-w-lg mx-auto">
         <form
-          class="border border-gray-100 bg-gradient-to-br from-green to-green-400 text-white p-12 max-w-lg mx-auto"
+          class="green-gradient"
           action="index.html"
           method="post"
           @submit.prevent="handleLogin"
@@ -40,10 +40,10 @@
             <button type="submit" :class="[{ loading: loading }]" class="mr-0">
               Login
             </button>
-            <div v-if="error" class="text-white mt-4">
+            <div v-if="error" class="mt-4">
               <span>{{ error }}</span>
             </div>
-            <span class="block mt-4"
+            <span class="block mt-4 text-sm"
               >No account yet.
               <nuxt-link to="/register" class="text-orange font-semibold"
                 >Register Here</nuxt-link
