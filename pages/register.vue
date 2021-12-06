@@ -20,47 +20,47 @@
             <label for="firstName">First Name</label>
             <input
               id="firstName"
+              v-model="registerForm.firstName"
               type="text"
               name="firstName"
-              v-model="registerForm.firstName"
             />
           </div>
           <div class="form-group green-label">
             <label for="lastName">Last Name</label>
             <input
               id="lastName"
+              v-model="registerForm.lastName"
               type="text"
               name="lastName"
-              v-model="registerForm.lastName"
             />
           </div>
           <div class="form-group green-label">
             <label for="email">Email</label>
             <input
               id="email"
+              v-model="registerForm.email"
               type="email"
               name="email"
-              v-model="registerForm.email"
             />
           </div>
           <div class="form-group green-label">
             <label for="password">Password</label>
             <input
               id="password"
+              v-model="registerForm.password"
               type="password"
               name="password"
               autocomplete="new-password"
-              v-model="registerForm.password"
             />
           </div>
           <div class="form-group green-label">
             <label for="confirmPassword">Confirm Password</label>
             <input
               id="confirmPassword"
+              v-model="registerForm.confirmPassword"
               type="password"
               name="confirmPassword"
               autocomplete="new-password"
-              v-model="registerForm.confirmPassword"
             />
           </div>
           <div class="text-right">
@@ -148,10 +148,14 @@ export default {
         this.loading = false
         return
       }
-      console.log('Register', customer)
       /**
         Redirect to Store / Account Page ?
       **/
+      this.$store.disptach('setUser', customer)
+      this.$store.dispatch('setNotification', {
+        message: `Welcome ${firstName}, your are now logged in.`,
+      })
+      this.$router.push('/')
     },
   },
 }
