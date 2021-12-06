@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container my-12">
+    <div class="container my-12 mt-4 md:mt-12">
       <div class="w-auto sm:max-w-lg mx-auto">
         <form
           class="green-gradient"

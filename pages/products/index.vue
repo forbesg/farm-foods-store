@@ -6,14 +6,14 @@
       </div>
       <div class="container">
         <div
-          class="category-cards grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6"
+          class="category-cards grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6"
         >
           <div
             v-for="(collection, index) in collections.edges"
             :key="collection.node.id"
             :image="collection.node.image ? collection.node.image : ''"
             :index="index"
-            class="category-cards--card"
+            class="category-cards--card bg-white"
           >
             <div class="image-container">
               <img
@@ -25,16 +25,16 @@
                 loading="lazy"
               />
             </div>
-            <div class="text-container py-4">
-              <h2 class="text-2xl lg:text-2xl mb-4">
+            <div class="text-container p-4">
+              <h2 class="font-semibold lg:text-lg mb-4">
                 {{ collection.node.title }}
               </h2>
-              <h3 class="text-base mb-8">
+              <h3 class="text-xs sm:text-sm mb-8">
                 {{ collection.node.description }}
               </h3>
               <nuxt-link
                 :to="`/products/${collection.node.handle}`"
-                class="brand capitalize"
+                class="brand capitalize text-sm"
                 >View {{ collection.node.handle }}</nuxt-link
               >
             </div>

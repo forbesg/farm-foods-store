@@ -15,8 +15,8 @@
       </button>
     </div>
     <div class="text-container">
-      <h3 class="font-bold mb-4">{{ product.title }}</h3>
-      <p class="text-sm">
+      <h3 class="font-semibold lg:text-lg mb-4">{{ product.title }}</h3>
+      <p class="text-xs sm:text-sm">
         {{ product.description }}
       </p>
       <nuxt-link
@@ -40,6 +40,9 @@ export default {
 </script>
 
 <style scoped>
+.product-card {
+  @apply bg-white;
+}
 .product-card .image-container {
   aspect-ratio: 3 / 2;
 }

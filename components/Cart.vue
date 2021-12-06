@@ -25,7 +25,7 @@
       :key="item.node.id"
       class="py-2 flex text-base items-center"
     >
-      <span class="flex-1"
+      <span class="flex-1 text-sm"
         >{{ item.node.merchandise.product.title }} -
         {{ item.node.merchandise.title }}</span
       >
@@ -130,3 +130,10 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.cart {
+  max-height: calc(100vh - 5rem);
+  overflow-y: scroll;
+}
+</style>

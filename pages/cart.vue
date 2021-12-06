@@ -15,13 +15,14 @@
       <div v-else class="cart-wrapper">
         <div
           v-if="cart && cart.lines.edges.length"
-          class="grid md:grid-cols-3 md:grid-rows-1 md:gap-12"
+          class="grid md:grid-cols-1 lg:grid-cols-3 md:grid-rows-1 md:gap-12"
         >
-          <div class="md:col-span-2 divide-y divide-solid">
+          <div class="lg:col-span-2 divide-y divide-solid">
             <cart-table-row
               v-for="line in cart.lines.edges"
               :key="line.node.id"
               :line="line"
+              class=""
             ></cart-table-row>
           </div>
           <div class="order-summary md:col-start-3 md:row-start-1">

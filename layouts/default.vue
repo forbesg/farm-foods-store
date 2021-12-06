@@ -26,7 +26,12 @@
       </button>
       <nuxt-link to="/" class="logo-container">
         <!-- <logo /> -->
-        <img src="~assets/images/logo.svg" alt="" />
+        <img
+          src="~assets/images/logo.svg"
+          alt="Farm Food Store"
+          width="200"
+          height="200"
+        />
       </nuxt-link>
       <button
         type="button"
@@ -74,14 +79,14 @@
           <nuxt-link to="#search">
             <img src="~assets/icons/search.svg" alt="Search" />
           </nuxt-link>
-          <span @click="handleShowCart">
+          <nuxt-link to="/cart" @click="handleShowCart">
             <img src="~assets/icons/cart.svg" alt="Shopping Cart" />
             <span
               v-if="cart && cart.lines && cart.lines.edges.length"
               class="bg-orange bg-opacity-75 flex justify-center items-center text-black w-5 h-5 rounded-full font-bold absolute top-0 right-0 transform -translate-y-1 -translate-x-1"
               >{{ cart.lines.edges.length }}</span
             >
-          </span>
+          </nuxt-link>
         </div>
       </div>
     </header>
@@ -96,13 +101,13 @@
         <div class="container">
           <div class="">
             <nav>
-              <nuxt-link to="/" class="block">Home</nuxt-link>
-              <nuxt-link to="/products" class="block">Products</nuxt-link>
+              <nuxt-link to="/" class="block my-4">Home</nuxt-link>
+              <nuxt-link to="/products" class="block my-4">Products</nuxt-link>
               <nuxt-link
                 v-for="page in pages"
                 :key="page.node.id"
                 :to="`/${page.node.handle}`"
-                class="block"
+                class="block my-4"
                 >{{ page.node.title }}</nuxt-link
               >
             </nav>
@@ -238,7 +243,7 @@ export default {
                             title
                           }
                           image {
-                            transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 200)
+                            transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 300)
                             altText
                           }
                         }

@@ -26,7 +26,7 @@
         >
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group my-6 flex justify-between">
       <label for="quantity" class="mr-4">Quantity:</label>
       <div
         class="quantity-input-wrapper border border-gray-100 flex justify-start items-center"
@@ -45,7 +45,6 @@
           type="number"
           name="quantity"
           min="1"
-          class="border-none"
         />
         <button
           type="button"

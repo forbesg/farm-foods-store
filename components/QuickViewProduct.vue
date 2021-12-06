@@ -10,8 +10,8 @@
             height="200"
           />
         </div>
-        <h2 class="text-4xl mb-4">{{ product.title }}</h2>
-        <p>{{ product.description }}</p>
+        <h2 class="text-2xl md:text-4xl mb-4">{{ product.title }}</h2>
+        <p class="mb-4">{{ product.description }}</p>
         <add-to-cart
           :product="product"
           @productAdded="$store.dispatch('setQuickViewProduct', null)"

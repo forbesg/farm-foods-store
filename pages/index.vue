@@ -45,6 +45,8 @@
                 <img
                   src="~assets/images/logo.svg"
                   class="w-full h-full md:w-96 md:h-96"
+                  width="200"
+                  height="200"
                 />
               </div>
             </div>

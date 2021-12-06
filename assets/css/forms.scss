@@ -2,7 +2,7 @@
 form {
   @apply border border-gray-100 p-6 sm:p-12 sm:max-w-lg mx-auto;
   &.green-gradient {
-    @apply bg-gradient-to-br from-green to-green-400 text-white;
+    @apply bg-gradient-to-br from-green-500 to-green-400 text-white;
   }
 }
 
@@ -11,7 +11,7 @@ form {
 }
 .form-group > input:not([type='radio']),
 .form-group > select {
-  @apply font-normal text-black flex-1 px-4 py-2 outline-none;
+  @apply font-normal text-black flex-1 px-4 py-2 outline-none rounded-none;
 }
 .form-group > input:not([type='radio']):active,
 .form-group > select:active {
@@ -32,9 +32,13 @@ form {
   // flex: 1 1 10rem;
 }
 .form-group .quantity-input-wrapper input[type='number'] {
-  @apply bg-white flex-initial w-16 px-4 py-2 mx-1 text-center;
+  @apply bg-white flex-initial w-16 px-4 py-2 mx-0 border-r border-l border-r-gray-100 border-l-gray-100 text-center rounded-none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
-.form-group .quantity-input-wrapper input[type='number']:focus-visible {
+.form-group .quantity-input-wrapper input[type='number']:focus-visible,
+.form-group .quantity-input-wrapper input[type='number']:focus {
   @apply bg-gray-100 outline-none;
 }
 /* Chrome, Safari, Edge, Opera */
