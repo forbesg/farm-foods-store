@@ -1,6 +1,17 @@
 <template>
-  <div class="py-4 lg:py-24">
-    <div class="container grid md:grid-cols-2 md:mt-12">
+  <div class="my-4 lg:my-12">
+    <div class="container">
+      <div class="breadcrumbs">
+        <nuxt-link to="/products">Products</nuxt-link>
+        <nuxt-link :to="`/products/${collection.handle}`">{{
+          collection.title
+        }}</nuxt-link>
+        <nuxt-link :to="`/products/${collection.handle}/${product.handle}`">{{
+          product.title
+        }}</nuxt-link>
+      </div>
+    </div>
+    <div class="container grid md:grid-cols-2 mt-6 md:mt-12 xl:gap-6">
       <div class="image-container">
         <img
           :src="product.media.edges[0].node.image.src"
@@ -9,7 +20,7 @@
           height="800"
         />
       </div>
-      <div class="product-detail py-4 lg:p-6">
+      <div class="product-detail py-4 md:px-4 lg:p-6">
         <h1 class="font-semibold text-3xl mb-4">{{ product.title }}</h1>
         <div v-html="product.descriptionHtml"></div>
         <add-to-cart :product="product"></add-to-cart>
@@ -64,13 +75,25 @@ export default {
         }
       }
     `
+    const collectionQuery = `
+      query {
+        collection(handle: "${params.collection}") {
+          title
+          handle
+        }
+      }
+    `
     try {
       const response = await $client(productQuery)
       const {
         data: { product },
       } = await response.json()
+      const {
+        data: { collection },
+      } = await $client(collectionQuery).then((res) => res.json())
       return {
         product,
+        collection,
         backgroundStyle: {
           backgroundImage: `linear-gradient(45deg, #000 50%, transparent), url(${product.media.edges[0].node.image.transformedSrc})`,
           backgroundRepeat: 'no-repeat',
@@ -92,10 +115,15 @@ export default {
 
 <style scoped>
 .image-container {
-  @apply w-full h-full;
+  @apply w-full h-auto;
   aspect-ratio: 16 / 10;
 }
-@screen lg {
+@screen md {
+  .image-container {
+    aspect-ratio: 1 / 1;
+  }
+}
+@screen 2xl {
   .image-container {
     aspect-ratio: 4 / 3;
   }

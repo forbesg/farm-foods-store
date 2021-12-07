@@ -8,7 +8,13 @@
       </div>
     </div> -->
     <div class="container my-12 title-content">
-      <h1 class="font-display font-semibold text-3xl lg:5xl">
+      <div class="breadcrumbs">
+        <nuxt-link to="/products">Products</nuxt-link>
+        <nuxt-link :to="`/products/${collection.handle}`">{{
+          collection.title
+        }}</nuxt-link>
+      </div>
+      <h1 class="font-display font-semibold text-3xl lg:5xl mt-6">
         {{ collection.title }}
       </h1>
     </div>

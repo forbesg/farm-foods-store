@@ -116,6 +116,24 @@ a.button.touch:active {
   @apply bg-orange-500;
 }
 
+.breadcrumbs {
+  a {
+    @apply text-orange text-sm font-semibold;
+    &.nuxt-link-exact-active {
+      @apply text-green font-normal;
+    }
+    &:after {
+      content: '>';
+      @apply mx-2;
+    }
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
 .loader {
   @apply inline-block
     w-12

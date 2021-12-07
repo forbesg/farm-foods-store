@@ -6,7 +6,7 @@
       </div>
       <div class="container">
         <div
-          class="category-cards grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6"
+          class="category-cards grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4"
         >
           <div
             v-for="(collection, index) in collections.edges"

@@ -10,6 +10,7 @@
       </div>
       <div class="product-details">
         <h2 class="font-semibold">
+          {{ line.node.merchandise.product.title }} -
           {{ line.node.merchandise.title }}
         </h2>
         <div class="divide-x divide-solid text-xs text-gray-400">
