@@ -32,7 +32,7 @@ form {
   // flex: 1 1 10rem;
 }
 .form-group .quantity-input-wrapper input[type='number'] {
-  @apply bg-white flex-initial w-16 px-4 py-2 mx-0 border-r border-l border-r-gray-100 border-l-gray-100 text-center rounded-none;
+  @apply bg-white flex-initial w-16 px-4 py-2 mx-0 border-r border-l border-gray-100 text-center rounded-none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
