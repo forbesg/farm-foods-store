@@ -25,8 +25,8 @@ export default {
     host: '0.0.0.0',
   },
   loading: {
-    color: '#F17621',
-    height: '2px',
+    color: '#F17621', //Orange
+    background: '#000',
   },
   head: {
     title: 'TestStorefront',

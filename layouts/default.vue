@@ -348,7 +348,7 @@ export default {
         @apply hidden;
       }
       > div {
-        @apply sticky top-0 transform-none p-12;
+        @apply sticky top-0 transform-none px-12 py-1;
         > .logo-container {
           @apply block w-32 h-32 my-12 mx-auto;
           svg {

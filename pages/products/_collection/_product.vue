@@ -11,7 +11,9 @@
         }}</nuxt-link>
       </div>
     </div>
-    <div class="container grid md:grid-cols-2 mt-6 md:mt-12 xl:gap-6">
+    <div
+      class="container grid lg:grid-cols-1 xl:grid-cols-2 mt-6 md:mt-12 xl:gap-6"
+    >
       <div class="image-container">
         <img
           :src="selectedVariantImage ? selectedVariantImage.src : ''"
@@ -20,7 +22,7 @@
           height="800"
         />
       </div>
-      <div class="product-detail py-4 md:px-4 lg:p-6">
+      <div class="product-detail py-4 md:px-4 lg:p-6 xl:py-0">
         <h1 class="font-semibold text-3xl mb-4">{{ product.title }}</h1>
         <div v-html="product.descriptionHtml"></div>
         <add-to-cart
@@ -36,13 +38,16 @@
         <div v-for="product in collectionProducts" :key="product.node.id">
           <product-card :product="product.node"></product-card>
         </div>
-        <div class="">
-          <nuxt-link :to="`/products/${collection.handle}`">{{
-            collection.title
-          }}</nuxt-link>
-        </div>
+        <div class=""></div>
       </div>
     </div>
+    <text-banner
+      text="View all products in the"
+      :link="{
+        path: `/products/${collection.handle}`,
+        text: `${collection.title} Collection`,
+      }"
+    ></text-banner>
   </div>
 </template>
 
@@ -140,15 +145,9 @@ export default {
         product,
         collection,
         collectionProducts: collection.products.edges.filter((edge) => {
-          console.log(edge.node, product)
           return edge.node.id !== product.id
         }),
         selectedVariantImage: product.variants.edges[0].node.image,
-        // backgroundStyle: {
-        //   backgroundImage: `linear-gradient(45deg, #000 50%, transparent), url(${product.media.edges[0].node.image.transformedSrc})`,
-        //   backgroundRepeat: 'no-repeat',
-        //   backgroundSize: 'cover',
-        // },
         order: {
           quantity: 1,
           variant: product?.variants?.edges[0],
@@ -175,6 +174,13 @@ export default {
 }
 @screen md {
   .image-container {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@screen xl {
+  .image-container {
+    @apply h-full;
     aspect-ratio: 1 / 1;
   }
 }
@@ -214,7 +220,6 @@ input::-webkit-inner-spin-button {
   appearance: none;
   margin: 0;
 }
-
 /* Firefox */
 input[type='number'] {
   -moz-appearance: textfield;

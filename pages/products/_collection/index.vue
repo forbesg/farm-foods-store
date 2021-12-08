@@ -11,7 +11,7 @@
         {{ collection.title }}
       </h1>
     </div>
-    <div class="">
+    <div class="mb-12">
       <div class="container">
         <div
           class="grid gap-2 sm:gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
@@ -24,6 +24,10 @@
         </div>
       </div>
     </div>
+    <text-banner
+      text="View all our"
+      :link="{ path: '/products', text: 'Product Collections' }"
+    ></text-banner>
   </div>
 </template>
 
