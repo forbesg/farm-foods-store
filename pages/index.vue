@@ -66,7 +66,7 @@
             class="flex overflow-x-auto pb-10 hide-scrollbars lg:overflow-visible"
           >
             <div
-              class="flex flex-nowrap space-x-4 lg:grid lg:grid-cols-4 lg:gap-4 lg:ml-0 lg:space-x-0 md:ml-20 ml-4"
+              class="flex flex-nowrap space-x-4 lg:grid lg:grid-cols-3 xl:grid-cols-4 lg:gap-4 lg:ml-0 lg:space-x-0 md:ml-20 ml-4"
             >
               <div
                 v-for="product in featuredProducts"

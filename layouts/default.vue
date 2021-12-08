@@ -25,7 +25,6 @@
         />
       </button>
       <nuxt-link to="/" class="logo-container">
-        <!-- <logo /> -->
         <img
           src="~assets/images/logo.svg"
           alt="Farm Food Store"
@@ -360,7 +359,7 @@ export default {
     }
   }
   footer {
-    @apply bg-green-900 text-white py-12 mt-24;
+    @apply bg-green-900 text-white py-12;
   }
 }
 </style>

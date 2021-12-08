@@ -27,6 +27,12 @@ form {
     @apply px-4;
   }
 }
+.form-group.radio {
+  @apply my-2;
+  &:first-child {
+    @apply mt-6;
+  }
+}
 .form-group.green-label > input:not([type='radio']) {
   @apply flex-1 w-40;
   // flex: 1 1 10rem;

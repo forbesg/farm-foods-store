@@ -1,13 +1,6 @@
 <template>
   <div>
-    <!-- <div :style="backgroundStyle" class="hero h-64">
-      <div class="container h-full flex items-center text-white">
-        <div class="title-content">
-          <h1 class="text-6xl">{{ collection.title }}</h1>
-        </div>
-      </div>
-    </div> -->
-    <div class="container my-12 title-content">
+    <div class="container my-6 md:my-12 title-content">
       <div class="breadcrumbs">
         <nuxt-link to="/products">Products</nuxt-link>
         <nuxt-link :to="`/products/${collection.handle}`">{{

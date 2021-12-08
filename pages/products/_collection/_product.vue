@@ -1,6 +1,6 @@
 <template>
-  <div class="my-4 lg:my-12">
-    <div class="container">
+  <div>
+    <div class="container my-6 md:my-12">
       <div class="breadcrumbs">
         <nuxt-link to="/products">Products</nuxt-link>
         <nuxt-link :to="`/products/${collection.handle}`">{{
@@ -14,8 +14,8 @@
     <div class="container grid md:grid-cols-2 mt-6 md:mt-12 xl:gap-6">
       <div class="image-container">
         <img
-          :src="product.media.edges[0].node.image.src"
-          :alt="product.media.edges[0].node.alt"
+          :src="selectedVariantImage ? selectedVariantImage.src : ''"
+          :alt="selectedVariantImage ? selectedVariantImage.altText : ''"
           width="800"
           height="800"
         />
@@ -23,7 +23,24 @@
       <div class="product-detail py-4 md:px-4 lg:p-6">
         <h1 class="font-semibold text-3xl mb-4">{{ product.title }}</h1>
         <div v-html="product.descriptionHtml"></div>
-        <add-to-cart :product="product"></add-to-cart>
+        <add-to-cart
+          :product="product"
+          @setSelectedVariantImage="handleSetSelectedVariantImage"
+        ></add-to-cart>
+      </div>
+    </div>
+    <div class="other-products bg-green-100 mt-24 py-24">
+      <div
+        class="container grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        <div v-for="product in collectionProducts" :key="product.node.id">
+          <product-card :product="product.node"></product-card>
+        </div>
+        <div class="">
+          <nuxt-link :to="`/products/${collection.handle}`">{{
+            collection.title
+          }}</nuxt-link>
+        </div>
       </div>
     </div>
   </div>
@@ -54,6 +71,10 @@ export default {
                   amount
                   currencyCode
                 }
+                image {
+                  altText
+                  src: transformedSrc(crop: CENTER, maxHeight: 600, maxWidth: 600)
+                }
               }
             }
           }
@@ -62,8 +83,8 @@ export default {
               node {
                 mediaContentType
                 ...on MediaImage {
-                  alt
                   image {
+                    altText
                     src: transformedSrc(crop: CENTER, maxHeight: 600, maxWidth: 600)
                     height
                     width
@@ -80,6 +101,30 @@ export default {
         collection(handle: "${params.collection}") {
           title
           handle
+          products(first: 5) {
+            edges {
+              node {
+                id
+                title
+                handle
+                media(first: 1) {
+                  edges {
+                    node {
+                      mediaContentType
+                      ...on MediaImage {
+                        alt
+                        image {
+                          src: transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 300)
+                          height
+                          width
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     `
@@ -94,11 +139,16 @@ export default {
       return {
         product,
         collection,
-        backgroundStyle: {
-          backgroundImage: `linear-gradient(45deg, #000 50%, transparent), url(${product.media.edges[0].node.image.transformedSrc})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-        },
+        collectionProducts: collection.products.edges.filter((edge) => {
+          console.log(edge.node, product)
+          return edge.node.id !== product.id
+        }),
+        selectedVariantImage: product.variants.edges[0].node.image,
+        // backgroundStyle: {
+        //   backgroundImage: `linear-gradient(45deg, #000 50%, transparent), url(${product.media.edges[0].node.image.transformedSrc})`,
+        //   backgroundRepeat: 'no-repeat',
+        //   backgroundSize: 'cover',
+        // },
         order: {
           quantity: 1,
           variant: product?.variants?.edges[0],
@@ -109,6 +159,11 @@ export default {
       console.log(err.message)
       error({ statusCode: 404, message: 'Page Not Found' })
     }
+  },
+  methods: {
+    handleSetSelectedVariantImage(image) {
+      this.selectedVariantImage = image
+    },
   },
 }
 </script>
@@ -125,6 +180,7 @@ export default {
 }
 @screen 2xl {
   .image-container {
+    @apply h-full;
     aspect-ratio: 4 / 3;
   }
 }

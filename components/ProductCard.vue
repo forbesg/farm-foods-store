@@ -15,8 +15,8 @@
       </button>
     </div>
     <div class="text-container">
-      <h3 class="font-semibold lg:text-lg mb-4">{{ product.title }}</h3>
-      <p class="text-xs sm:text-sm">
+      <h3 class="font-semibold lg:text-lg">{{ product.title }}</h3>
+      <p v-if="product.description" class="text-xs sm:text-sm my-4">
         {{ product.description }}
       </p>
       <nuxt-link

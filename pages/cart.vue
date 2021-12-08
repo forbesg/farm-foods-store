@@ -15,7 +15,7 @@
       <div v-else class="cart-wrapper">
         <div
           v-if="cart && cart.lines.edges.length"
-          class="grid md:grid-cols-1 lg:grid-cols-3 md:grid-rows-1 md:gap-12"
+          class="grid md:grid-cols-1 md:grid-rows-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3"
         >
           <div class="lg:col-span-2 divide-y divide-solid">
             <cart-table-row
@@ -25,7 +25,9 @@
               class=""
             ></cart-table-row>
           </div>
-          <div class="order-summary md:col-start-3 md:row-start-1">
+          <div
+            class="order-summary md:col-start-3 md:row-start-1 lg:col-span-2 lg:col-start-1 lg:row-start-auto xl:col-start-3"
+          >
             <div
               class="order-summary-inner sticky top-32 bg-orange-50 bg-opacity-25 p-6"
             >

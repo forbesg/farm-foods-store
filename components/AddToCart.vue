@@ -4,7 +4,7 @@
       <div
         v-for="variant in product.variants.edges"
         :key="variant.node.id"
-        class="form-group"
+        class="form-group radio"
       >
         <input
           :id="variant.node.title.split(' ').join('-').toLowerCase()"
@@ -136,6 +136,11 @@ export default {
         this.loading = false
         this.$emit('productAdded')
       })
+    },
+  },
+  watch: {
+    'order.variant'(variant) {
+      this.$emit('setSelectedVariantImage', variant.node.image)
     },
   },
 }

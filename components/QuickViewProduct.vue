@@ -4,8 +4,8 @@
       <div v-if="product">
         <div class="image-container">
           <img
-            :src="product.images.edges[0].node.transformedSrc"
-            alt=""
+            :src="selectedVariantImage.src"
+            :alt="selectedVariantImage.altText"
             width="300"
             height="200"
           />
@@ -15,6 +15,7 @@
         <add-to-cart
           :product="product"
           @productAdded="$store.dispatch('setQuickViewProduct', null)"
+          @setSelectedVariantImage="handleSetSelectedVariantImage"
         ></add-to-cart>
         <div class="text-center">
           <button
@@ -33,9 +34,6 @@
             Close
           </button>
         </div>
-        <!-- <pre>
-          {{ product }}
-        </pre> -->
       </div>
       <div v-else class="flex justify-center items-center w-full h-full">
         <loader />
@@ -55,6 +53,7 @@ export default {
   data() {
     return {
       product: null,
+      selectedVariantImage: { src: '', alt: '' },
       order: {
         variant: null,
         quantity: 1,
@@ -81,7 +80,10 @@ export default {
               node {
                 id
                 title
-                quantityAvailable
+                image {
+                  altText
+                  src: transformedSrc(crop: CENTER, maxWidth: 600, maxHeight: 400)
+                }
                 priceV2 {
                   amount
                   currencyCode
@@ -95,9 +97,10 @@ export default {
     const variables = {
       id: this.quickProduct.id,
     }
-    const { data, errors } = await this.$client(query, variables).then((res) =>
-      res.json()
-    )
+    const {
+      data: { product },
+      errors,
+    } = await this.$client(query, variables).then((res) => res.json())
     if (errors) {
       errors.forEach((err) => {
         // eslint-disable-next-line
@@ -108,7 +111,13 @@ export default {
         message: 'There was a problem retrieving product data',
       })
     }
-    this.product = data.product
+    this.selectedVariantImage = product.variants.edges[0].node.image
+    this.product = product
+  },
+  methods: {
+    handleSetSelectedVariantImage(image) {
+      this.selectedVariantImage = image
+    },
   },
 }
 </script>

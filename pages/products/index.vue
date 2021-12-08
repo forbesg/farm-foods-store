@@ -2,7 +2,12 @@
   <div>
     <div>
       <div class="container my-12">
-        <h1 class="font-display font-semibold text-3xl lg:5xl">Products</h1>
+        <div class="breadcrumbs">
+          <nuxt-link to="/products">Products</nuxt-link>
+        </div>
+        <h1 class="font-display font-semibold text-3xl lg:5xl mt-6">
+          Products
+        </h1>
       </div>
       <div class="container">
         <div

@@ -73,10 +73,13 @@ export default {
     }
   },
   methods: {
-    handleQuantityChange(e, id) {
-      this.$store.dispatch('cart/updateCartLine', {
+    async handleQuantityChange(e, id) {
+      await this.$store.dispatch('cart/updateCartLine', {
         id,
         newQuantity: parseInt(e.target.value, 10),
+      })
+      this.$store.dispatch('setNotification', {
+        message: `Your cart has been updated`,
       })
     },
     async handleRemoveLineItem(id) {
@@ -92,11 +95,11 @@ export default {
 .cart-table--row {
   .cart-item {
     display: grid;
-    grid-template-columns: repeat(2, 1fr) 50px;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
-      'image details details'
-      'image details details'
-      '. quantity remove';
+      'image details'
+      'image details'
+      'quantity remove';
     @screen sm {
       grid-template-columns: repeat(5, 1fr);
       grid-template-areas:
@@ -109,6 +112,19 @@ export default {
     .image-container {
       grid-area: image;
       @apply p-4;
+      img {
+        @apply h-auto;
+        aspect-ratio: 1 / 1;
+        @screen sm {
+          aspect-ratio: 4 / 3;
+        }
+        @screen md {
+          aspect-ratio: 1 / 1;
+        }
+        @screen 2xl {
+          aspect-ratio: 4 / 3;
+        }
+      }
     }
     .product-details {
       grid-area: details;
