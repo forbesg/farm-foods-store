@@ -29,14 +29,18 @@ export default {
     background: '#000',
   },
   head: {
-    title: 'TestStorefront',
+    title: 'Farm Foods Store | Edinburgh',
     htmlAttrs: {
       lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Delivaring locally farmed produce directly to your door.',
+      },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'theme-color', content: '#0a231e' },
     ],
