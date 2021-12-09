@@ -16,7 +16,7 @@
       </button>
     </div>
     <div class="text-container">
-      <h3 class="font-semibold lg:text-lg">{{ product.title }}</h3>
+      <h2 class="font-semibold lg:text-lg">{{ product.title }}</h2>
       <p v-if="product.description" class="text-xs sm:text-sm my-4">
         {{ product.description }}
       </p>

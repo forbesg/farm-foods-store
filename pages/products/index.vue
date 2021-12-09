@@ -27,7 +27,7 @@
                 width="296"
                 height="197"
                 class="w-full h-full"
-                loading="lazy"
+                :loading="index < 4 ? 'eager' : 'lazy'"
               />
             </div>
             <div class="text-container p-4">
