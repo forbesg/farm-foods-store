@@ -3,9 +3,10 @@
     <div class="image-container relative">
       <img
         :src="product.media.edges[0].node.image.src"
-        :alt="product.media.edges[0].node.alt"
-        width="product.media.edges[0].node.image.width"
-        height="product.media.edges[0].node.image.height"
+        :alt="product.media.edges[0].node.image.altText"
+        :width="product.media.edges[0].node.image.width"
+        :height="product.media.edges[0].node.image.height"
+        :loading="index < 4 ? 'eager' : 'lazy'"
       />
       <button
         class="quick-view absolute right-0 bottom-0"
@@ -34,6 +35,11 @@ export default {
     product: {
       type: Object,
       required: true,
+    },
+    index: {
+      type: Number,
+      required: false,
+      default: 100,
     },
   },
 }

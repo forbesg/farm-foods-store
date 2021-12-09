@@ -17,9 +17,10 @@
           class="grid gap-2 sm:gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
         >
           <product-card
-            v-for="product in collection.products.edges"
+            v-for="(product, index) in collection.products.edges"
             :key="product.node.id"
             :product="product.node"
+            :index="index"
           ></product-card>
         </div>
       </div>
@@ -59,6 +60,7 @@ export default {
                       ...on MediaImage {
                         alt
                         image {
+                          altText
                           src: transformedSrc(crop: CENTER, maxHeight: 400, maxWidth: 600)
                           height
                           width

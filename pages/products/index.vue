@@ -22,8 +22,8 @@
           >
             <div class="image-container">
               <img
-                :src="collection.node.image.transformedSrc"
-                alt="collection.node.image.altText"
+                :src="collection.node.image.src"
+                :alt="collection.node.image.altText"
                 width="296"
                 height="197"
                 class="w-full h-full"
@@ -92,7 +92,7 @@ const collectionQuery = `
           description
           handle
           image {
-            transformedSrc(crop: CENTER, maxHeight: 400, maxWidth: 600)
+            src: transformedSrc(crop: CENTER, maxHeight: 400, maxWidth: 600)
             altText
           }
           products(first: 5) {

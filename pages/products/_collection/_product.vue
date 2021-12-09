@@ -33,7 +33,7 @@
     </div>
     <div class="other-products bg-green-100 mt-24 py-24">
       <div
-        class="container grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        class="container grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-4 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
       >
         <div v-for="product in collectionProducts" :key="product.node.id">
           <product-card :product="product.node"></product-card>

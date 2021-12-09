@@ -3,9 +3,9 @@
     <div class="image-container relative">
       <img
         :src="product.media.edges[0].node.image.src"
-        :alt="product.media.edges[0].node.alt"
-        width="product.media.edges[0].node.image.width"
-        height="product.media.edges[0].node.image.height"
+        :alt="product.media.edges[0].node.image.altText"
+        :width="product.media.edges[0].node.image.width"
+        :height="product.media.edges[0].node.image.height"
       />
       <div
         class="text-container absolute inset-0 bg-black bg-opacity-50 text-white flex flex-col justify-center items-center p-4"
