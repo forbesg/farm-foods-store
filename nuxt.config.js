@@ -1,6 +1,10 @@
 import fetch from 'isomorphic-fetch'
 const pagesQuery = `
   query {
+    shop {
+      name
+      description
+    }
     pages(first: 10) {
       edges {
         node {
@@ -26,7 +30,6 @@ export default {
   },
   loading: {
     color: '#F17621', //Orange
-    background: '#000',
   },
   head: {
     title: 'Farm Foods Store | Edinburgh',
@@ -39,7 +42,8 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Delivaring locally farmed produce directly to your door.',
+        content:
+          'Farm Foods Store delivery locally farmed produce directly to your door.',
       },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'theme-color', content: '#0a231e' },
@@ -78,6 +82,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    // https://pwa.nuxtjs.org
+    '@nuxtjs/pwa',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -86,9 +92,6 @@ export default {
     '@nuxtjs/axios',
   ],
 
-  // tailwindcss: {
-  //   jit: process.env.NODE_ENV === 'development',
-  // },
   publicRuntimeConfig: {
     storeUrl,
     storeAPIEndpoint,

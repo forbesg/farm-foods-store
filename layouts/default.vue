@@ -202,6 +202,7 @@ export default {
       const cart = JSON.parse(localCart)
       if (customerAccessToken) {
         const user = this.$store.getters.user
+        // if (!user) return
         const updateCartBuyersIdentityMutation = `
           mutation cartBuyerIdentityUpdate($cartId: ID!, $buyerIdentity: CartBuyerIdentityInput!) {
             cartBuyerIdentityUpdate(cartId: $cartId, buyerIdentity: $buyerIdentity) {
@@ -323,6 +324,9 @@ export default {
       nav {
         a {
           @apply block text-center text-gray-300 hover:text-white transition-colors duration-500 p-4;
+          &:active {
+            @apply font-semibold;
+          }
           &.nuxt-link-exact-active {
             @apply text-orange font-bold;
           }

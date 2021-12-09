@@ -41,7 +41,7 @@ a.brand:hover:after {
 
 button,
 a.button {
-  @apply relative inline-block bg-gradient-to-b from-orange-500 to-orange-400 text-sm font-bold max-w-max py-2 px-4 transition-all duration-200 overflow-hidden;
+  @apply relative inline-block text-center bg-gradient-to-b from-orange-500 to-orange-400 text-sm font-bold max-w-max py-2 px-4 transition-all duration-200 overflow-hidden;
   touch-action: manipulation;
 }
 button:hover,
@@ -107,13 +107,13 @@ button.touch,
 a.button.touch {
   @apply bg-none bg-white shadow-none transition-colors duration-200;
 }
-// button.touch:hover,
-// a.button.touch:hover {
-//   // @apply bg-orange-100;
-// }
 button.touch:active,
 a.button.touch:active {
   @apply bg-orange-500;
+}
+button.large,
+a.button.large {
+  @apply px-8 py-4;
 }
 
 .breadcrumbs {

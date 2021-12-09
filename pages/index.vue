@@ -30,11 +30,15 @@
                   grown produce straight to your door. Better quality produce
                   with a lower carbon footprint.
                 </p>
-                <div class="flex items-center mt-4">
-                  <nuxt-link to="/products" class="button text-white text-xl"
+                <div class="mt-4">
+                  <nuxt-link
+                    to="/products"
+                    class="button large text-white text-xl"
                     >Start Shopping</nuxt-link
                   >
-                  <nuxt-link to="/our-suppliers" class="button text ml-6"
+                </div>
+                <div class="mt-4">
+                  <nuxt-link to="/our-suppliers" class="button text"
                     >View Our Suppliers</nuxt-link
                   >
                 </div>
