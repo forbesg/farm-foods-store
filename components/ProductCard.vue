@@ -7,6 +7,8 @@
         :width="product.media.edges[0].node.image.width"
         :height="product.media.edges[0].node.image.height"
         :loading="index < 4 ? 'eager' : 'lazy'"
+        :class="[{ loaded: imageLoaded }]"
+        @load="handleImageLoad"
       />
       <button
         class="quick-view absolute right-0 bottom-0"
@@ -42,6 +44,17 @@ export default {
       default: 100,
     },
   },
+  data() {
+    return {
+      imageLoaded: false,
+    }
+  },
+  methods: {
+    handleImageLoad() {
+      console.log('image loaded')
+      this.imageLoaded = true
+    },
+  },
 }
 </script>
 
@@ -52,8 +65,11 @@ export default {
 .product-card .image-container {
   aspect-ratio: 3 / 2;
 }
-.product-card .image-container img {
-  @apply w-full h-full;
+.product-card .image-container > img {
+  @apply w-full h-full opacity-0 transition-opacity duration-200;
+}
+.product-card .image-container > img.loaded {
+  @apply opacity-100;
 }
 .product-card .text-container {
   @apply p-4;
