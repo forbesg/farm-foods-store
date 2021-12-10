@@ -120,6 +120,13 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
+  pwa: {
+    manaifest: {
+      background_color: '#0a231e',
+      short_name: 'Farm 2 Door',
+    },
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }
