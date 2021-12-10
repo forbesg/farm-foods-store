@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <h1 class="my-12 text-3xl font-display font-semibold">
-        Your Shopping Cart
+        Your Shopping Trolly
       </h1>
       <div
         v-if="$fetchState.pending"
@@ -26,7 +26,7 @@
             ></cart-table-row>
           </div>
           <div
-            class="order-summary md:col-start-3 md:row-start-1 lg:col-span-2 lg:col-start-1 lg:row-start-auto xl:col-start-3"
+            class="order-summary my-12 md:mt-0 md:col-start-3 md:row-start-1 lg:col-span-2 lg:col-start-1 lg:row-start-auto xl:col-start-3"
           >
             <div
               class="order-summary-inner sticky top-32 bg-orange-50 bg-opacity-25 p-6"
@@ -71,7 +71,7 @@
 
         <div v-else class="flex justify-center items-center">
           <div class="w-full bg-orange-50 bg-opacity-25 p-24 text-center">
-            <p class="text-2xl mb-4">Your cart is empty</p>
+            <p class="text-2xl mb-4">Your trolly is empty</p>
             <nuxt-link to="/products" class="button">Start Shopping</nuxt-link>
           </div>
         </div>

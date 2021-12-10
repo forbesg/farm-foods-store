@@ -122,14 +122,14 @@ export default {
 
       this.$store.dispatch('cart/addToCart', newLine).then((res) => {
         if (res.errors && res.errors.length) {
-          this.error = 'There was an error adding your item to the cart'
+          this.error = 'There was an error adding your item to your trolly'
           this.loading = false
           return
         }
 
         this.$store.dispatch('setNotification', {
           style: 'default',
-          message: 'Your item has been added to your shopping bag.',
+          message: 'Your item has been added to your shopping trolly.',
         })
         // Reset quantity & loading state
         this.order.quantity = 1
