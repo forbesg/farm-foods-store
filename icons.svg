@@ -27,7 +27,10 @@
    version="1.1"
    id="svg20"
    sodipodi:docname="icons.svg"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:export-filename="/home/forbes/Projects/Shopify/TestStorefront/static/icon.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
   <metadata
      id="metadata24">
     <rdf:RDF>
@@ -36,7 +39,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -54,7 +57,7 @@
      id="namedview22"
      showgrid="false"
      inkscape:zoom="0.50795232"
-     inkscape:cx="202.82236"
+     inkscape:cx="-142.68251"
      inkscape:cy="232.30527"
      inkscape:window-x="3840"
      inkscape:window-y="28"
