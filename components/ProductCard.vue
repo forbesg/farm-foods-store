@@ -51,27 +51,8 @@ export default {
   },
   methods: {
     handleImageLoad() {
-      console.log('image loaded')
       this.imageLoaded = true
     },
   },
 }
 </script>
-
-<style scoped>
-.product-card {
-  @apply bg-white;
-}
-.product-card .image-container {
-  aspect-ratio: 3 / 2;
-}
-.product-card .image-container > img {
-  @apply w-full h-full opacity-0 transition-opacity duration-200;
-}
-.product-card .image-container > img.loaded {
-  @apply opacity-100;
-}
-.product-card .text-container {
-  @apply p-4;
-}
-</style>

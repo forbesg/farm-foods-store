@@ -1,6 +1,11 @@
 <template>
   <div class="">
     <div class="hero relative overflow-hidden">
+      <img
+        src="/food-banner.jpg"
+        alt="Farm Foods Delivery To Your Door"
+        class="hero-image"
+      />
       <div
         class="overlay absolute inset-0 text-white md:flex justify-start items-center"
       >
@@ -95,9 +100,6 @@
                     >
                   </div>
                 </overlay-product-card>
-                <!-- <div
-                  class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"
-                ></div> -->
               </div>
               <div class="block w-1 lg:hidden"></div>
             </div>
@@ -140,6 +142,17 @@ export default {
       collections: null,
     }
   },
+  head() {
+    return {
+      link: [
+        {
+          rel: 'preload',
+          as: 'image',
+          href: `${this.$config.hostname}/food-banner.jpg`,
+        },
+      ],
+    }
+  },
   computed: {
     featuredProducts() {
       return this.$store.getters.featuredProducts
@@ -153,11 +166,15 @@ export default {
   text-shadow: 0.035em 0.035em 0 #000;
 }
 .hero {
-  background-image: url(/food-banner.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  // background-image: url(/food-banner.jpg);
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-position: center;
   min-height: calc(100vh - var(--header-height));
+  > .hero-image {
+    min-height: calc(100vh - var(--header-height));
+    @apply w-full object-cover;
+  }
   @screen lg {
     @apply min-h-screen bg-fixed;
   }

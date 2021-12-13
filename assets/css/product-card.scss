@@ -1,0 +1,23 @@
+.product-card {
+  @apply bg-white;
+  .image-container {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+
+    > img {
+      @apply w-full h-full opacity-0 transition-all duration-200;
+      &.loaded {
+        @apply opacity-100;
+      }
+    }
+
+    &:hover {
+      img.loaded {
+        @apply scale-105;
+      }
+    }
+  }
+  .text-container {
+    @apply p-4;
+  }
+}

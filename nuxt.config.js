@@ -64,7 +64,11 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/css/style.scss', '@/assets/css/forms.scss'],
+  css: [
+    '@/assets/css/style.scss',
+    '@/assets/css/forms.scss',
+    '@/assets/css/animations.scss',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/shopify'],
@@ -86,16 +90,14 @@ export default {
     '@nuxtjs/pwa',
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-  ],
-
   publicRuntimeConfig: {
     storeUrl,
     storeAPIEndpoint,
     storeAccessToken,
+    hostname:
+      process.env.NODE_ENV === 'production'
+        ? 'https://farm-foods-store.netlify.app/'
+        : 'http://localhost:3000',
   },
 
   generate: {
@@ -117,13 +119,13 @@ export default {
     },
   },
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
-
   pwa: {
     manaifest: {
       background_color: '#0a231e',
       short_name: 'Farm 2 Door',
+    },
+    meta: {
+      theme_color: '#103a32',
     },
   },
 

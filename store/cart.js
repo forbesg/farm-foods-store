@@ -174,7 +174,7 @@ export const actions = {
     }
   },
 
-  async removeFromCart({ commit, state }, merchandiseId) {
+  async removeFromCart({ commit, state, rootState }, merchandiseId) {
     const query = `
       mutation cartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
         cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
@@ -244,6 +244,9 @@ export const actions = {
 
     if (userErrors && userErrors.length) {
       return { errors: userErrors }
+    }
+    if (!cart.lines || !cart.lines.edges || !cart.lines.edges.length) {
+      commit('setShowCart', false, { root: true })
     }
     commit('updateCart', cart)
     window.localStorage.setItem('farmfoods:cart', JSON.stringify(cart))

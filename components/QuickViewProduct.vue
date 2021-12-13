@@ -8,6 +8,8 @@
             :alt="selectedVariantImage.altText"
             width="300"
             height="200"
+            :class="[{ loaded: imageLoaded }]"
+            @load="handleImageLoaded"
           />
         </div>
         <h2 class="text-2xl md:text-4xl mb-4">{{ product.title }}</h2>
@@ -52,6 +54,7 @@ export default {
   },
   data() {
     return {
+      imageLoaded: false,
       product: null,
       selectedVariantImage: { src: '', alt: '' },
       order: {
@@ -115,6 +118,9 @@ export default {
     this.product = product
   },
   methods: {
+    handleImageLoaded() {
+      this.imageLoaded = true
+    },
     handleSetSelectedVariantImage(image) {
       this.selectedVariantImage = image
     },
@@ -122,28 +128,46 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .quick-view {
   @apply fixed inset-0 bg-black bg-opacity-25 z-30;
   backdrop-filter: blur(0.5rem);
-}
-.quick-view .inner-wrapper {
-  @apply fixed top-0 right-0 bottom-0 bg-white p-6 overflow-x-hidden overflow-y-scroll;
-  width: 90vw;
-}
-@screen md {
-  .quick-view .inner-wrapper {
-    @apply p-12;
-    width: 32rem;
+  .inner-wrapper {
+    @apply fixed top-0 right-0 bottom-0 bg-white p-6 overflow-x-hidden overflow-y-scroll;
+    width: 90vw;
+    @screen md {
+      @apply p-12;
+      width: 32rem;
+    }
+    .image-container {
+      @apply w-full h-auto mb-4;
+      aspect-ratio: 3 / 2;
+      img {
+        @apply w-full h-full object-cover opacity-0 transition-opacity duration-200;
+        &.loaded {
+          @apply opacity-100;
+        }
+      }
+    }
   }
 }
-
-.quick-view .inner-wrapper .image-container {
-  @apply w-full h-auto mb-4;
-  aspect-ratio: 3 / 2;
-}
-
-.quick-view .inner-wrapper .image-container img {
-  @apply w-full h-full object-cover;
-}
+// .quick-view .inner-wrapper {
+//   @apply fixed top-0 right-0 bottom-0 bg-white p-6 overflow-x-hidden overflow-y-scroll;
+//   width: 90vw;
+// }
+// @screen md {
+//   .quick-view .inner-wrapper {
+//     @apply p-12;
+//     width: 32rem;
+//   }
+// }
+//
+// .quick-view .inner-wrapper .image-container {
+//   @apply w-full h-auto mb-4;
+//   aspect-ratio: 3 / 2;
+// }
+//
+// .quick-view .inner-wrapper .image-container img {
+//   @apply w-full h-full object-cover opacity-0;
+// }
 </style>

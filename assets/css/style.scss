@@ -1,3 +1,4 @@
+@import './product-card.scss';
 :root {
   --color-racing-green: 0, 66, 37;
   --color-racing-green: 16, 58, 50;
@@ -155,66 +156,66 @@ a.button.large {
   }
 }
 
-.cartFlip-enter,
-.cartFlip-leave-to {
-  transform: translateY(-100vh);
-  transform-origin: top;
-  transition: all 500ms ease-in-out;
-  @screen lg {
-    top: 1rem;
-    right: 1rem;
-  }
-}
-.cartFlip-enter-to,
-.cartFlip-leave {
-  top: 5rem;
-  transform: translateY(0vh);
-  transform-origin: top;
-  transition: all 500ms ease-in-out;
-  @screen lg {
-    top: 1rem;
-    right: 1rem;
-  }
-}
-
-/** VUE Transitions **/
-.slideUp-enter,
-.slideUp-leave-to {
-  transform: translateY(4rem);
-  transition: all 200ms ease-in;
-}
-.slideUp-enter-to,
-.slideUp-leave {
-  transform: translateY(0rem);
-  transition: all 200ms ease-in;
-}
-
-.slideInRight-enter,
-.slideInRight-leave-to {
-  transition: all 200ms ease-in;
-}
-.slideInRight-enter .inner-wrapper,
-.slideInRight-leave-to .inner-wrapper {
-  transform: translateX(32rem);
-  transition: all 200ms ease-in;
-}
-.slideInRight-enter-to,
-.slideInRight-leave {
-  transition: all 200ms 200ms ease-in;
-}
-.slideInRight-enter-to .inner-wrapper,
-.slideInRight-leave .inner-wrapper {
-  transform: translateX(0rem);
-  transition: all 200ms 0ms ease-in;
-}
-
-.slideDownTrolly-enter,
-.slideDownTrolly-leave-to {
-  transform: translateY(-3rem) translateX(-3rem);
-  transition: all 0ms 100ms;
-}
-.slideDownTrolly-enter-to,
-.slideDownTrolly-leave {
-  transform: translateY(0rem) translateX(-3rem);
-  transition: all 300ms;
-}
+// .cartFlip-enter,
+// .cartFlip-leave-to {
+//   transform: translateY(-100vh);
+//   transform-origin: top;
+//   transition: all 500ms ease-in-out;
+//   @screen lg {
+//     top: 1rem;
+//     right: 1rem;
+//   }
+// }
+// .cartFlip-enter-to,
+// .cartFlip-leave {
+//   top: 5rem;
+//   transform: translateY(0vh);
+//   transform-origin: top;
+//   transition: all 500ms ease-in-out;
+//   @screen lg {
+//     top: 1rem;
+//     right: 1rem;
+//   }
+// }
+//
+// /** VUE Transitions **/
+// .slideUp-enter,
+// .slideUp-leave-to {
+//   transform: translateY(4rem);
+//   transition: all 200ms ease-in;
+// }
+// .slideUp-enter-to,
+// .slideUp-leave {
+//   transform: translateY(0rem);
+//   transition: all 200ms ease-in;
+// }
+//
+// .slideInRight-enter,
+// .slideInRight-leave-to {
+//   transition: all 200ms ease-in;
+// }
+// .slideInRight-enter .inner-wrapper,
+// .slideInRight-leave-to .inner-wrapper {
+//   transform: translateX(32rem);
+//   transition: all 200ms ease-in;
+// }
+// .slideInRight-enter-to,
+// .slideInRight-leave {
+//   transition: all 200ms 200ms ease-in;
+// }
+// .slideInRight-enter-to .inner-wrapper,
+// .slideInRight-leave .inner-wrapper {
+//   transform: translateX(0rem);
+//   transition: all 200ms 0ms ease-in;
+// }
+//
+// .slideDownTrolly-enter,
+// .slideDownTrolly-leave-to {
+//   transform: translateY(-3rem) translateX(-3rem);
+//   transition: all 0ms 100ms;
+// }
+// .slideDownTrolly-enter-to,
+// .slideDownTrolly-leave {
+//   transform: translateY(0rem) translateX(-3rem);
+//   transition: all 300ms;
+// }

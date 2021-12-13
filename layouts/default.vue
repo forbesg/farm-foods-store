@@ -154,6 +154,7 @@
 </template>
 
 <script>
+import fixBody from '@/plugins/fix-body.client.js'
 export default {
   data() {
     return {
@@ -185,19 +186,14 @@ export default {
         this.navOpen = false
       }
     },
-    showCart(value) {
-      if (value) {
-        document.body.setAttribute(
-          'style',
-          `top: ${document.body.getBoundingClientRect().top}px`
-        )
-        document.body.classList.add('fixed')
-
-        return
-      }
-      document.body.classList.remove('fixed')
-      document.body.removeAttribute('style')
+    quickViewProduct(value) {
+      // If quick view is displayed, set document positioning to fixed
+      fixBody(value)
     },
+    // showCart(value) {
+    //   // If cart is displayed, set document positioning to fixed
+    //   fixBody(value)
+    // },
   },
   async mounted() {
     const localCart = window.localStorage.getItem('farmfoods:cart')

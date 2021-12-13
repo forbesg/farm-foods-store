@@ -13,7 +13,16 @@
         <div
           class="category-cards grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4"
         >
-          <div
+          <collection-card
+            v-for="(collection, index) in collections.edges"
+            :key="collection.node.id"
+            :image="collection.node.image ? collection.node.image : ''"
+            :collection="collection.node"
+            :index="index"
+            class="category-cards--card bg-white"
+          >
+          </collection-card>
+          <!-- <div
             v-for="(collection, index) in collections.edges"
             :key="collection.node.id"
             :image="collection.node.image ? collection.node.image : ''"
@@ -43,7 +52,7 @@
                 >View {{ collection.node.handle }}</nuxt-link
               >
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- <feature
           v-for="(collection, index) in collections.edges"
