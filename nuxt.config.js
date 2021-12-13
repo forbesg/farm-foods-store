@@ -96,7 +96,7 @@ export default {
     storeAccessToken,
     hostname:
       process.env.NODE_ENV === 'production'
-        ? 'https://farm-foods-store.netlify.app/'
+        ? 'https://farm-foods-store.netlify.app'
         : 'http://localhost:3000',
   },
 
