@@ -4,6 +4,8 @@
       <img
         src="/food-banner.jpg"
         alt="Farm Foods Delivery To Your Door"
+        width="1600"
+        height="1067"
         class="hero-image"
       />
       <div
@@ -177,6 +179,9 @@ export default {
   }
   @screen lg {
     @apply min-h-screen bg-fixed;
+    > .hero-image {
+      @apply min-h-screen;
+    }
   }
   .overlay {
     background-color: rgba(#000, 0.5);
