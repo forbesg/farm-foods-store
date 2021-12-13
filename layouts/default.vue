@@ -92,25 +92,28 @@
         </div>
       </div>
     </header>
-    <div class="relative">
-      <nuxt-link
-        v-if="
-          cart &&
-          cart.lines &&
-          cart.lines.edges.length &&
-          $route.path !== '/trolly'
-        "
-        to="/trolly"
-        class="hidden md:flex fixed top-0 right-0 bg-green min-content h-12 pl-4 pr-8 justify-between items-center rounded-b text-white tansform -translate-x-12 focus:hover:shadow-md active:shadow-none"
-      >
-        <span class="mx-1">Trolly</span>
-        <img src="~assets/icons/shopping_trolly.svg" alt="Shopping Trolly" />
+    <div class="relative z-0">
+      <transition name="slideDownTrolly">
         <span
-          class="bg-orange bg-opacity-75 flex justify-center items-center text-black w-5 h-5 rounded-full font-bold absolute right-0 transform -translate-x-5 -translate-y-2"
+          v-if="
+            cart &&
+            cart.lines &&
+            cart.lines.edges.length &&
+            $route.path !== '/trolly' &&
+            !showCart
+          "
+          class="hidden md:flex fixed top-0 right-0 z-20 cursor-pointer bg-green min-content h-12 pl-4 pr-8 justify-between items-center rounded-b text-white transform -translate-x-12 focus:hover:shadow-md active:shadow-none"
+          @click.prevent.stop="handleShowCart"
         >
-          {{ cart.lines.edges.length }}
+          <span class="mx-1">Trolly</span>
+          <img src="~assets/icons/shopping_trolly.svg" alt="Shopping Trolly" />
+          <span
+            class="bg-orange bg-opacity-75 flex justify-center items-center text-black w-5 h-5 rounded-full font-bold absolute right-0 transform -translate-x-5 -translate-y-2"
+          >
+            {{ cart.lines.edges.length }}
+          </span>
         </span>
-      </nuxt-link>
+      </transition>
       <div class="min-h-screen">
         <Nuxt />
       </div>
@@ -181,6 +184,19 @@ export default {
         this.$store.commit('setShowCart', false)
         this.navOpen = false
       }
+    },
+    showCart(value) {
+      if (value) {
+        document.body.setAttribute(
+          'style',
+          `top: ${document.body.getBoundingClientRect().top}px`
+        )
+        document.body.classList.add('fixed')
+
+        return
+      }
+      document.body.classList.remove('fixed')
+      document.body.removeAttribute('style')
     },
   },
   async mounted() {

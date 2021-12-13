@@ -70,8 +70,11 @@
       >
     </div>
     <div v-if="cart.checkoutUrl" class="flex justify-end mt-6">
-      <nuxt-link v-if="$route.path !== '/cart'" to="/cart" class="button text"
-        >View Your Cart</nuxt-link
+      <nuxt-link
+        v-if="$route.path !== '/trolly'"
+        to="/trolly"
+        class="button text"
+        >View Your Trolly</nuxt-link
       >
       <a :href="cart.checkoutUrl" class="button">Checkout</a>
     </div>
@@ -133,7 +136,14 @@ export default {
 
 <style lang="scss" scoped>
 .cart {
-  max-height: calc(100vh - 5rem);
+  max-height: calc(100% - 3rem);
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+    background-color: green;
+    @apply bg-green-100 w-1;
+  }
+  &::-webkit-scrollbar-thumb {
+    @apply bg-orange w-1 rounded;
+  }
 }
 </style>

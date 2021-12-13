@@ -12,12 +12,15 @@ body {
   background-color: #f7f7f7;
   font-family: 'Lato', sans-serif;
   font-size: 16px;
+  &.fixed {
+    @apply h-screen overflow-y-hidden;
+  }
 }
 .clearfix {
   clear: both;
 }
 
-@keyframes infinteSpin {
+@keyframes infiniteSpin {
   from {
     transform: translateX(-0.5rem) translateY(-0.5rem) rotate(0deg);
     transform-origin: center;
@@ -101,7 +104,7 @@ a.button.loading:after {
   content: '';
   @apply absolute top-1/2 left-1/2 transform w-4 h-4 border-2 border-black rounded-full;
   border-right-color: transparent;
-  animation: infinteSpin 500ms linear infinite;
+  animation: infiniteSpin 500ms linear infinite;
 }
 button.touch,
 a.button.touch {
@@ -203,4 +206,15 @@ a.button.large {
 .slideInRight-leave .inner-wrapper {
   transform: translateX(0rem);
   transition: all 200ms 0ms ease-in;
+}
+
+.slideDownTrolly-enter,
+.slideDownTrolly-leave-to {
+  transform: translateY(-3rem) translateX(-3rem);
+  transition: all 0ms 100ms;
+}
+.slideDownTrolly-enter-to,
+.slideDownTrolly-leave {
+  transform: translateY(0rem) translateX(-3rem);
+  transition: all 300ms;
 }

@@ -17,5 +17,6 @@ export default {
       title: 'Page Not Found',
     }
   },
+  scrollToTop: true,
 }
 </script>
