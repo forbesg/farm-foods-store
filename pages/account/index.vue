@@ -12,15 +12,26 @@
           </div>
           <button class="white" @click="handleLogout">Logout</button>
         </div>
-        <div v-if="user.orders" class="lg:col-span-2">
+        <div v-if="orders && !ordersLoading" class="lg:col-span-2">
           <div class="my-12">
             <h2 class="text-lg mb-4 font-semibold">Your Orders</h2>
-            <div
-              v-if="user.orders.edges && user.orders.edges.length"
-              class=""
-            ></div>
+            <div v-if="orders.edges && orders.edges.length">
+              <account-order-card
+                v-for="order in orders.edges"
+                :key="order.node.id"
+                :order="order"
+                :accessToken="user.accessToken"
+                class="mb-4"
+              ></account-order-card>
+            </div>
             <div v-else>No Orders Yet</div>
           </div>
+        </div>
+        <div
+          v-else
+          class="h-full w-full flex justify-center items-center lg:col-span-2"
+        >
+          <loader />
         </div>
       </div>
     </div>
@@ -30,6 +41,70 @@
 <script>
 export default {
   middleware: ['signedInUser'],
+  data() {
+    return {
+      orders: null,
+      ordersLoading: true,
+    }
+  },
+  async fetch() {
+    if (!this.user) return console.log('bailing')
+    const ordersQuery = `
+      query ($customerAccessToken: String!) {
+        customer(customerAccessToken: $customerAccessToken) {
+          orders(first: 5, reverse: true) {
+            edges {
+              node {
+                id
+                orderNumber
+                customerUrl
+                processedAt
+                shippingAddress {
+                  firstName
+                  lastName
+                  address1
+                  address2
+                  city
+                  zip
+                }
+                currentSubtotalPrice {
+                  amount
+                }
+                currentTotalPrice {
+                  amount
+                }
+                fulfillmentStatus
+              }
+            }
+          }
+        }
+      }
+    `
+    try {
+      const {
+        data: {
+          customer: { orders },
+        },
+        errors,
+      } = await this.$client(ordersQuery, {
+        customerAccessToken: this.$store.getters.user.accessToken,
+      }).then((res) => res.json())
+      if (errors && errors.length) {
+        throw new Error('Error retreiving your orders')
+      }
+      this.orders = orders
+      this.ordersLoading = false
+    } catch (err) {
+      this.$store.dispatch('setNotification', { message: err.message })
+      this.orders = []
+      this.ordersLoading = false
+    }
+  },
+  head() {
+    return {
+      title: 'Your Account | Farm Foods Store',
+    }
+  },
   computed: {
     user() {
       return this.$store.getters.user
@@ -45,6 +120,17 @@ export default {
       this.$store.dispatch('setNotification', {
         message: 'You have been logged out',
       })
+    },
+    getOrders() {
+      this.$fetch()
+    },
+  },
+  fetchOnServer: false,
+  watch: {
+    user(value) {
+      if (value && this.ordersLoading) {
+        this.getOrders()
+      }
     },
   },
 }

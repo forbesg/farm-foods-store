@@ -20,6 +20,8 @@
           :alt="selectedVariantImage ? selectedVariantImage.altText : ''"
           width="800"
           height="800"
+          :class="[{ loaded: imageLoaded }]"
+          @load="handleImageLoaded"
         />
       </div>
       <div class="product-detail py-4 md:px-4 lg:p-6 xl:py-0">
@@ -53,6 +55,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      imageLoaded: false,
+    }
+  },
   async asyncData({ params, $client, error }) {
     const productQuery = `
       {
@@ -163,6 +170,9 @@ export default {
     handleSetSelectedVariantImage(image) {
       this.selectedVariantImage = image
     },
+    handleImageLoaded() {
+      this.imageLoaded = true
+    },
   },
 }
 </script>
@@ -191,7 +201,10 @@ export default {
   }
 }
 .image-container img {
-  @apply w-full h-full object-cover;
+  @apply w-full h-full object-cover opacity-0 transition-opacity duration-200;
+}
+.image-container img.loaded {
+  @apply opacity-100;
 }
 .form-group {
   @apply flex flex-wrap items-center my-6;

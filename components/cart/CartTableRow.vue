@@ -17,16 +17,14 @@
           <span class="inline-block px-2 my-2">Tag1</span>
           <span class="inline-block px-2 my-2">Tag2</span>
         </div>
-        <span class="block font-semibold"
-          >£{{
-            parseFloat(line.node.estimatedCost.totalAmount.amount).toFixed(2)
-          }}</span
-        >
+        <span class="block font-semibold">{{
+          line.node.estimatedCost.totalAmount.amount | currency
+        }}</span>
       </div>
       <div class="product-quantity">
         <div class="select-container">
           <select
-            class="bg-white border border-gray-400 p-2 text-center"
+            class="bg-white border border-gray-400"
             name="quantity"
             @change="(e) => handleQuantityChange(e, line.node.id)"
           >
@@ -132,7 +130,7 @@ export default {
     .product-quantity {
       grid-area: quantity;
       .select-container {
-        @apply relative bg-orange-50 bg-opacity-25;
+        @apply relative bg-white;
         &:after {
           content: '';
           background-image: url(~assets/icons/expand.svg);
@@ -142,10 +140,10 @@ export default {
           @apply absolute right-0 top-0 transform translate-y-2 -translate-x-2 block h-4 w-4 z-0;
         }
         select {
-          @apply relative z-10 inline-block bg-transparent border-none w-full;
+          @apply relative z-10 inline-block bg-transparent border-gray-200 w-full;
           -webkit-appearance: none;
           appearance: none;
-          padding: 0.25rem;
+          padding: 0.25rem 15%;
           &:active,
           &:focus-visible {
             @apply outline-none;

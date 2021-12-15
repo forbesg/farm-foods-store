@@ -120,6 +120,11 @@ export default {
       loading: false,
     }
   },
+  head() {
+    return {
+      title: 'Register | Farm Foods Store',
+    }
+  },
   methods: {
     async handleRegistration() {
       this.loading = true
@@ -151,7 +156,7 @@ export default {
       /**
         Redirect to Store / Account Page ?
       **/
-      this.$store.disptach('setUser', customer)
+      this.$store.dispatch('setUser', customer)
       this.$store.dispatch('setNotification', {
         message: `Welcome ${firstName}, your are now logged in.`,
       })

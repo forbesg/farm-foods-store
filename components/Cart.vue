@@ -63,11 +63,9 @@
       class="totals flex items-center justify-end mt-8 text-xl font-bold"
     >
       <span>Total: </span>
-      <span class="ml-4"
-        >&pound;{{
-          parseFloat(cart.estimatedCost.totalAmount.amount).toFixed(2)
-        }}</span
-      >
+      <span class="ml-4">{{
+        cart.estimatedCost.totalAmount.amount | currency
+      }}</span>
     </div>
     <div v-if="cart.checkoutUrl" class="flex justify-end mt-6">
       <nuxt-link

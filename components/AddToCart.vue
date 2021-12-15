@@ -18,10 +18,7 @@
           class="pl-4"
           >{{ variant.node.title }} -
           <span class="text-sm text-gray-700"
-            >(£{{
-              parseFloat(variant.node.priceV2.amount).toFixed(2)
-            }}
-            each)</span
+            >{{ variant.node.priceV2.amount | currency }} each</span
           ></label
         >
       </div>

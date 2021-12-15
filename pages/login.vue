@@ -100,6 +100,18 @@ export default {
       loading: false,
     }
   },
+  head() {
+    return {
+      title: 'Login | Farm Foods Store',
+      meta: [
+        {
+          name: 'description',
+          hid: 'description',
+          content: 'Login to your Farm Food Store Account',
+        },
+      ],
+    }
+  },
   computed: {
     user() {
       return this.$store.getters.user
