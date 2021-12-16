@@ -21,13 +21,6 @@ export default {
       type: Object,
       required: true,
     },
-    index: {
-      type: Number,
-      required: false,
-    },
-  },
-  data() {
-    return {}
   },
 }
 </script>

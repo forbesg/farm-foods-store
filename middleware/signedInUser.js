@@ -1,5 +1,6 @@
 export default function ({ redirect, route, store, isClient }) {
   if (process.server) {
+    // eslint-disable-next-line
     console.log('server side')
     return
   }

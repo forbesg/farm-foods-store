@@ -29,7 +29,7 @@ export default {
     host: '0.0.0.0',
   },
   loading: {
-    color: '#F17621', //Orange
+    color: '#F17621', // Orange
   },
   head: {
     title: 'Farm Foods Store | Edinburgh',

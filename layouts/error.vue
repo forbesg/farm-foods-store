@@ -12,11 +12,11 @@
 
 <script>
 export default {
+  scrollToTop: true,
   head() {
     return {
       title: 'Page Not Found',
     }
   },
-  scrollToTop: true,
 }
 </script>

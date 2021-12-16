@@ -97,8 +97,8 @@ export const actions = {
       commit('setPages', pages.edges)
       commit('addFeaturedProducts', products.edges)
     } catch (err) {
-      // eslint-disable-nextline
-      console.log(err)
+      // eslint-disable-next-line
+      console.info(err.message)
     }
   },
   setUser({ commit }, customer) {

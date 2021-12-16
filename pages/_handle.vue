@@ -41,7 +41,8 @@ export default {
         page,
       }
     } catch (err) {
-      console.log(err)
+      // eslint-disable-next-line
+      console.info(err.message)
       error({ statusCode: 404, message: 'Page Not Found' })
     }
   },
