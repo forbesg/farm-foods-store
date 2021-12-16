@@ -29,7 +29,7 @@
         </div>
         <div
           v-else
-          class="h-full w-full flex justify-center items-center lg:col-span-2"
+          class="h-72 w-full flex justify-center items-center lg:col-span-2"
         >
           <loader />
         </div>

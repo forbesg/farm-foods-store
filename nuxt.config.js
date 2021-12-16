@@ -49,7 +49,6 @@ export default {
       { name: 'theme-color', content: '#0a231e' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       {
         rel: 'preconnect',
@@ -120,9 +119,11 @@ export default {
   },
 
   pwa: {
-    manaifest: {
+    manifest: {
       background_color: '#0a231e',
+      name: 'Farms Foods 2 Door',
       short_name: 'Farm 2 Door',
+      lang: 'en-gb',
     },
     meta: {
       theme_color: '#103a32',
