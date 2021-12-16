@@ -48,7 +48,11 @@ export default {
     }
   },
   async fetch() {
-    if (!this.user) return
+    if (!this.user) {
+      this.ordersLoading = false
+      return
+    }
+
     const ordersQuery = `
       query ($customerAccessToken: String!) {
         customer(customerAccessToken: $customerAccessToken) {
@@ -89,9 +93,11 @@ export default {
       } = await this.$client(ordersQuery, {
         customerAccessToken: this.$store.getters.user.accessToken,
       }).then((res) => res.json())
+
       if (errors && errors.length) {
         throw new Error('Error retreiving your orders')
       }
+
       this.orders = orders
       this.ordersLoading = false
     } catch (err) {

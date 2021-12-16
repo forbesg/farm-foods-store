@@ -167,7 +167,7 @@ export default {
         this.error = errors[0].message
         return
       }
-
+      customer.accessToken = customerAccessToken.accessToken
       this.$store.dispatch('setUser', customer)
       localStorage.setItem(
         'farmfoods:customer-accessToken',

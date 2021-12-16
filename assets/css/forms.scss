@@ -4,7 +4,7 @@ form {
   &.green-gradient {
     @apply bg-gradient-to-br from-green-500 to-green-400 text-white px-6 py-12;
     @screen md {
-      @apply px-6;
+      @apply p-12;
     }
   }
 }
@@ -33,22 +33,32 @@ form {
 .form-group > input[type='radio'] + label {
   @apply text-base font-normal w-auto;
 }
+.form-group.green-label {
+  @apply h-auto flex flex-nowrap;
+  @screen xs {
+    @apply flex-wrap m-0 mb-4;
+  }
+}
 .form-group.green-label > label {
-  @apply flex items-center justify-center text-center w-24 bg-green text-orange text-xs font-semibold px-2 h-full;
+  @apply flex justify-center items-center text-center w-24 bg-green text-orange text-xs font-semibold px-2 h-10;
+  @screen xs {
+    @apply p-2 w-auto h-auto;
+  }
   @screen sm {
     @apply px-4;
   }
 }
+.form-group.green-label > input:not([type='radio']) {
+  @apply block;
+}
+
 .form-group.radio {
   @apply my-2;
   &:first-child {
     @apply mt-6;
   }
 }
-.form-group.green-label > input:not([type='radio']) {
-  @apply flex-1 w-40;
-  // flex: 1 1 10rem;
-}
+
 .form-group .quantity-input-wrapper input[type='number'] {
   @apply bg-white flex-initial w-16 px-4 py-2 mx-0 border-r border-l border-gray-100 text-center rounded-none;
   -webkit-appearance: none;

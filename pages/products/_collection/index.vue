@@ -14,7 +14,7 @@
     <div class="mb-12">
       <div class="container">
         <div
-          class="grid gap-2 sm:gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
+          class="grid gap-2 sm:gap-4 xs:grid-cols-1 grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
         >
           <product-card
             v-for="(product, index) in collection.products.edges"

@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   mode: process.env.NODE_ENV === 'development' ? 'jit' : '',
   theme: {
@@ -45,6 +47,10 @@ module.exports = {
           800: '#0a231e',
           900: '#081c19',
         },
+      },
+      screens: {
+        xs: { max: '320px' },
+        ...defaultTheme.screens,
       },
     },
   },

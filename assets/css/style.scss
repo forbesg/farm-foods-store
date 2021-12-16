@@ -124,11 +124,11 @@ a.button.large {
   a {
     @apply text-orange text-sm font-semibold;
     &.nuxt-link-exact-active {
-      @apply text-green font-normal;
+      @apply text-green;
     }
     &:after {
       content: '>';
-      @apply mx-2;
+      @apply text-green mx-2;
     }
     &:last-child {
       &:after {

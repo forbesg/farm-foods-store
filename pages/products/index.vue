@@ -11,7 +11,7 @@
       </div>
       <div class="container">
         <div
-          class="category-cards grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4"
+          class="category-cards grid xs:grid-cols-1 grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4"
         >
           <collection-card
             v-for="(collection, index) in collections.edges"
