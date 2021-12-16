@@ -55,11 +55,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      imageLoaded: false,
-    }
-  },
   async asyncData({ params, $client, error }) {
     const productQuery = `
       {
@@ -164,6 +159,11 @@ export default {
       // eslint-disable-next-line
       console.log(err.message)
       error({ statusCode: 404, message: 'Page Not Found' })
+    }
+  },
+  data() {
+    return {
+      imageLoaded: false,
     }
   },
   methods: {

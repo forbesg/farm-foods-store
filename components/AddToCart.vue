@@ -98,6 +98,11 @@ export default {
       )
     },
   },
+  watch: {
+    'order.variant'(variant) {
+      this.$emit('setSelectedVariantImage', variant.node.image)
+    },
+  },
   methods: {
     updateQuantity(quantity) {
       if (!quantity || !(this.order.quantity + quantity)) return
@@ -133,11 +138,6 @@ export default {
         this.loading = false
         this.$emit('productAdded')
       })
-    },
-  },
-  watch: {
-    'order.variant'(variant) {
-      this.$emit('setSelectedVariantImage', variant.node.image)
     },
   },
 }

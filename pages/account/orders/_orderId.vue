@@ -184,9 +184,12 @@ export default {
       } = await this.$client(ordersQuery, {
         id,
       }).then((res) => res.json())
-      if (errors) console.log(errors)
+      if (errors) {
+        throw new Error(errors[0].message)
+      }
       this.order = order
     } catch (err) {
+      // eslint-disable-next-line
       console.log(err)
     }
   },

@@ -63,7 +63,8 @@
                 </div>
               </div>
               <div class="mt-6 text-right">
-                <a :href="cart.checkoutUrl" class="button">Checkout</a>
+                <nuxt-link to="/checkout" class="button">Checkout</nuxt-link>
+                <!-- <a :href="cart.checkoutUrl" class="button">Checkout</a> -->
               </div>
             </div>
           </div>

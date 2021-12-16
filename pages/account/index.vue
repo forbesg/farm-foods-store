@@ -20,7 +20,7 @@
                 v-for="order in orders.edges"
                 :key="order.node.id"
                 :order="order"
-                :accessToken="user.accessToken"
+                :access-token="user.accessToken"
                 class="mb-4"
               ></account-order-card>
             </div>
@@ -48,7 +48,7 @@ export default {
     }
   },
   async fetch() {
-    if (!this.user) return console.log('bailing')
+    if (!this.user) return
     const ordersQuery = `
       query ($customerAccessToken: String!) {
         customer(customerAccessToken: $customerAccessToken) {
@@ -110,6 +110,13 @@ export default {
       return this.$store.getters.user
     },
   },
+  watch: {
+    user(value) {
+      if (value && this.ordersLoading) {
+        this.getOrders()
+      }
+    },
+  },
   methods: {
     handleLogout() {
       this.$store.dispatch('setUser', null)
@@ -126,13 +133,6 @@ export default {
     },
   },
   fetchOnServer: false,
-  watch: {
-    user(value) {
-      if (value && this.ordersLoading) {
-        this.getOrders()
-      }
-    },
-  },
 }
 </script>
 

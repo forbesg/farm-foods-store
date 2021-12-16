@@ -74,7 +74,8 @@
         class="button text"
         >View Your Trolly</nuxt-link
       >
-      <a :href="cart.checkoutUrl" class="button">Checkout</a>
+      <n-link to="/checkout" class="button">Checkout</n-link>
+      <!-- <a :href="cart.checkoutUrl" class="button">Checkout</a> -->
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 /** FORMS **/
 form {
-  @apply border border-gray-100 p-6 sm:p-12 sm:max-w-lg mx-auto;
+  @apply sm:max-w-lg;
   &.green-gradient {
     @apply bg-gradient-to-br from-green-500 to-green-400 text-white;
   }
@@ -20,6 +20,15 @@ form {
 .form-group > input:not([type='radio']):focus-visible,
 .form-group > select:focus-visible {
   @apply outline-none;
+}
+.form-group > label {
+  @apply flex items-center text-xs w-16 font-semibold pr-2 h-full;
+  @screen sm {
+    @apply px-4 w-24;
+  }
+}
+.form-group > input[type='radio'] + label {
+  @apply text-base font-normal w-auto;
 }
 .form-group.green-label > label {
   @apply flex items-center justify-center text-center w-24 bg-green text-orange text-xs font-semibold px-2 h-full;
