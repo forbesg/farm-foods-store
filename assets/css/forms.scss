@@ -8,6 +8,14 @@ form {
     }
   }
 }
+select {
+  @apply border-orange-100 rounded-full;
+  &:focus-visible,
+  &:focus,
+  &:active {
+    @apply outline-none;
+  }
+}
 
 .form-group {
   @apply flex items-center relative my-6 h-10;
@@ -24,6 +32,7 @@ form {
 .form-group > select:focus-visible {
   @apply outline-none;
 }
+
 .form-group > label {
   @apply flex items-center text-xs w-16 font-semibold pr-2 h-full;
   @screen sm {

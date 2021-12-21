@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <div class="container my-12">
+      <div class="container my-6 md:my-12">
         <div class="breadcrumbs">
           <nuxt-link to="/products">Products</nuxt-link>
         </div>

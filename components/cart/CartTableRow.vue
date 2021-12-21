@@ -24,7 +24,7 @@
       <div class="product-quantity">
         <div class="select-container">
           <select
-            class="bg-white border border-gray-400"
+            class="bg-white border"
             name="quantity"
             @change="(e) => handleQuantityChange(e, line.node.id)"
           >
@@ -146,7 +146,7 @@ export default {
           @apply absolute right-0 top-0 transform translate-y-2 -translate-x-2 block h-4 w-4 z-0;
         }
         select {
-          @apply relative z-10 inline-block bg-transparent border-gray-200 w-full;
+          @apply relative z-10 inline-block bg-transparent w-full;
           -webkit-appearance: none;
           appearance: none;
           padding: 0.25rem 15%;
