@@ -77,7 +77,7 @@
             <div v-if="error" class="mt-4">
               {{ error }}
             </div>
-            <span class="block mt-4 text-sm"
+            <span class="block text-center mt-4 text-sm"
               >Already have an account.
               <nuxt-link to="/login" class="text-orange font-semibold"
                 >Login Here</nuxt-link

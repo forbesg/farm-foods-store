@@ -59,8 +59,13 @@
       </button>
     </div>
     <div class="text-right text-xs mt-4">
-      <button type="button" name="button" class="text" @click="handleEmptyCart">
-        Remove All Items
+      <button
+        type="button"
+        name="button"
+        class="text text-xs"
+        @click="handleEmptyCart"
+      >
+        Remove All
       </button>
     </div>
     <div

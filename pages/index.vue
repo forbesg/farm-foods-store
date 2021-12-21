@@ -97,7 +97,7 @@
                     </p>
                     <nuxt-link
                       :to="`/products/${product.node.collections.edges[0].node.handle}/${product.node.handle}`"
-                      class="inline-block text text-xs font-semibold text-orange-500 mt-4"
+                      class="inline-block brand text text-xs font-semibold text-orange-500 mt-4"
                       >View {{ product.node.title }}</nuxt-link
                     >
                   </div>

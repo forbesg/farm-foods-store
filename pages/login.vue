@@ -43,7 +43,7 @@
             <div v-if="error" class="mt-4">
               <span>{{ error }}</span>
             </div>
-            <span class="block mt-4 text-sm"
+            <span class="block text-center mt-4 text-sm"
               >No account yet.
               <nuxt-link to="/register" class="text-orange font-semibold"
                 >Register Here</nuxt-link

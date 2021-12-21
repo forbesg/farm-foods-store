@@ -112,7 +112,7 @@ export default {
       grid-template-areas:
         'image details details quantity remove'
         'image details details quantity remove';
-      @apply p-4;
+      @apply p-6;
     }
     .image-container {
       grid-area: image;

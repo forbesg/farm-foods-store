@@ -25,7 +25,7 @@
       <nuxt-link
         :to="`/products/${$route.params.collection}/${product.handle}`"
         class="inline-block brand text-sm capitalize mt-4"
-        >{{ product.handle }}</nuxt-link
+        >{{ product.handle | humanizeSlug }}</nuxt-link
       >
     </div>
   </div>
