@@ -72,7 +72,7 @@
               <p>
                 Unit Price: {{ item.node.variant.priceV2.amount | currency }}
               </p>
-              <p>
+              <p class="total">
                 Total Price:
                 {{ item.node.originalTotalPrice.amount | currency }}
               </p>
@@ -229,13 +229,14 @@ export default {
       h3 {
         @apply mb-2;
       }
-      .image-container {
-      }
       .detail {
         p {
           @apply text-xs;
-          @screen md {
-            @apply text-sm;
+          // @screen md {
+          //   @apply text-sm;
+          // }
+          &.total {
+            @apply text-sm font-bold;
           }
         }
       }

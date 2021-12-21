@@ -335,6 +335,82 @@ export const actions = {
     window.localStorage.setItem('farmfoods:cart', JSON.stringify(cart))
     return { cart }
   },
+  async emptyCart({ commit, state }, lineIdsArray) {
+    const mutation = `
+      mutation cartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+        cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+          cart {
+            id
+            checkoutUrl
+            estimatedCost {
+              subtotalAmount {
+                amount
+                currencyCode
+              }
+              totalAmount {
+                amount
+                currencyCode
+              }
+            }
+            lines(first: 100) {
+              edges {
+                node {
+                  id
+                  quantity
+                  estimatedCost {
+                    totalAmount {
+                      amount
+                      currencyCode
+                    }
+                  }
+                  merchandise {
+                    ... on ProductVariant {
+                      id
+                      title
+                      priceV2 {
+                        amount
+                        currencyCode
+                      }
+                      product {
+                        id
+                        title
+                      }
+                      image {
+                        transformedSrc(crop: CENTER, maxHeight: 200, maxWidth: 300)
+                        altText
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          userErrors {
+            code
+            field
+            message
+          }
+        }
+      }
+    `
+    const variables = {
+      cartId: state.cart.id,
+      lineIds: lineIdsArray,
+    }
+    const {
+      data: {
+        cartLinesRemove: { cart, userErrors },
+      },
+    } = await this.$client(mutation, variables).then((res) => res.json())
+    // const response = await this.$client(query, variables).then((res) => res.json())
+
+    if (userErrors && userErrors.length) {
+      return { errors: userErrors }
+    }
+    commit('updateCart', cart)
+    window.localStorage.setItem('farmfoods:cart', JSON.stringify(cart))
+    return { cart }
+  },
   resetCart({ commit }) {
     commit('resetCart')
   },

@@ -58,9 +58,14 @@
         Remove
       </button>
     </div>
+    <div class="text-right text-xs mt-4">
+      <button type="button" name="button" class="text" @click="handleEmptyCart">
+        Remove All Items
+      </button>
+    </div>
     <div
       v-if="cart.estimatedCost"
-      class="totals flex items-center justify-end mt-8 text-xl font-bold"
+      class="totals flex items-center justify-end mt-6 text-xl font-bold"
     >
       <span>Total: </span>
       <span class="ml-4">{{
@@ -128,6 +133,15 @@ export default {
         newQuantity,
       })
       button.classList.remove('loading')
+    },
+    async handleEmptyCart() {
+      await this.$store.dispatch(
+        'cart/emptyCart',
+        this.cart.lines.edges.map((line) => line.node.id)
+      )
+      this.$store.dispatch('setNotification', {
+        message: 'Your trolly is empty',
+      })
     },
   },
 }

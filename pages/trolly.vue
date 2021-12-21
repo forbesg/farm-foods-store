@@ -17,7 +17,7 @@
           v-if="cart && cart.lines.edges.length"
           class="grid md:grid-cols-1 md:grid-rows-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3"
         >
-          <div class="lg:col-span-2 divide-y divide-solid">
+          <div class="bg-white lg:col-span-2 divide-y divide-solid">
             <cart-table-row
               v-for="line in cart.lines.edges"
               :key="line.node.id"

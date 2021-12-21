@@ -98,28 +98,34 @@ export default {
       'image details'
       'image details'
       'quantity remove';
+    grid-gap: 1rem;
+    padding: 0.5rem;
+    @screen xs {
+      grid-template-areas:
+        'image image'
+        'details details'
+        'quantity remove';
+      padding: 1rem;
+    }
     @screen sm {
       grid-template-columns: repeat(5, 1fr);
       grid-template-areas:
         'image details details quantity remove'
         'image details details quantity remove';
-    }
-    > * {
       @apply p-4;
     }
     .image-container {
       grid-area: image;
-      @apply p-4;
       img {
         @apply h-auto;
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 4 / 3;
         @screen sm {
           aspect-ratio: 4 / 3;
         }
         @screen md {
           aspect-ratio: 1 / 1;
         }
-        @screen 2xl {
+        @screen lg {
           aspect-ratio: 4 / 3;
         }
       }

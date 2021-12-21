@@ -11,9 +11,9 @@
           <img
             src="~assets/images/logo.svg"
             alt="Logo"
-            class="w-20 h-20 mb-6 mx-auto"
+            class="w-16 h-16 mb-4 mx-auto"
           />
-          <h1 class="text-2xl text-center font-medium mb-12">
+          <h1 class="text-2xl text-center font-medium mb-8">
             Create an account
           </h1>
           <div class="form-group green-label">
@@ -23,6 +23,7 @@
               v-model="registerForm.firstName"
               type="text"
               name="firstName"
+              autocomplete="firstName"
             />
           </div>
           <div class="form-group green-label">
@@ -32,6 +33,7 @@
               v-model="registerForm.lastName"
               type="text"
               name="lastName"
+              autocomplete="lastName"
             />
           </div>
           <div class="form-group green-label">
@@ -41,6 +43,7 @@
               v-model="registerForm.email"
               type="email"
               name="email"
+              autocomplete="username"
             />
           </div>
           <div class="form-group green-label">
@@ -63,7 +66,7 @@
               autocomplete="new-password"
             />
           </div>
-          <div class="text-right">
+          <div class="form-group green-label-submit">
             <button
               type="submit"
               :class="[{ loading: loading }]"
@@ -125,6 +128,8 @@ export default {
       title: 'Register | Farm Foods Store',
     }
   },
+  // TODO: Need to make sure that the users accessToken is being written to
+  // Vuex (user) and to localStorage
   methods: {
     async handleRegistration() {
       this.loading = true
@@ -132,7 +137,7 @@ export default {
         this.registerForm
       if (!firstName || !lastName || !email || !password || !confirmPassword) {
         this.loading = false
-        return (this.error = 'Complete all required fields')
+        return (this.error = 'Please complete all fields above')
       }
       if (password !== confirmPassword) {
         this.loading = false

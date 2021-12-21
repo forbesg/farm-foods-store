@@ -124,6 +124,9 @@ export default {
 
       this.$store.dispatch('cart/addToCart', newLine).then((res) => {
         if (res.errors && res.errors.length) {
+          // Any cart error will be invalid cart/user. Remove current cart to create a new instance
+          this.$store.dispatch('cart/resetCart')
+          localStorage.removeItem('farmfoods:cart')
           this.error = 'There was an error adding your item to your trolly'
           this.loading = false
           return

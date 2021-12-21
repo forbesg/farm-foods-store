@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container my-12 mt-4 md:mt-12">
+    <div class="container my-8 mt-4 md:mt-12">
       <div class="w-auto sm:max-w-lg mx-auto">
         <form
           class="green-gradient"
@@ -11,9 +11,9 @@
           <img
             src="~assets/images/logo.svg"
             alt="Logo"
-            class="w-20 h-20 mb-6 mx-auto"
+            class="w-16 h-16 mb-4 mx-auto"
           />
-          <h1 class="text-2xl text-center font-medium mb-12">
+          <h1 class="text-xl sm:text-2xl text-center font-medium mb-8">
             Login to your account
           </h1>
           <div class="form-group green-label">
@@ -36,7 +36,7 @@
               autocomplete="current-password"
             />
           </div>
-          <div class="text-right">
+          <div class="form-group green-label-submit">
             <button type="submit" :class="[{ loading: loading }]" class="mr-0">
               Login
             </button>

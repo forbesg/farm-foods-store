@@ -34,22 +34,32 @@ form {
   @apply text-base font-normal w-auto;
 }
 .form-group.green-label {
-  @apply h-auto flex flex-nowrap;
-  @screen xs {
-    @apply flex-wrap m-0 mb-4;
+  @apply h-auto block m-0 mb-4;
+  // @screen xs {
+  //   @apply flex-wrap m-0 mb-4;
+  // }
+  @screen sm {
+    @apply flex flex-nowrap;
   }
 }
 .form-group.green-label > label {
-  @apply flex justify-center items-center text-center w-24 bg-green text-orange text-xs font-semibold px-2 h-10;
-  @screen xs {
-    @apply p-2 w-auto h-auto;
-  }
+  @apply flex flex-nowrap justify-center items-center text-center bg-green text-orange text-xs font-semibold p-2 w-auto max-w-max h-auto;
+  // @screen xs {
+  //   @apply p-2 w-auto h-auto;
+  // }
   @screen sm {
-    @apply px-4;
+    @apply py-2 px-4 w-24 max-w-none h-10;
   }
 }
 .form-group.green-label > input:not([type='radio']) {
-  @apply block;
+  @apply block w-full;
+}
+
+.form-group.green-label-submit {
+  @apply block h-auto;
+  button[type='submit'] {
+    @apply block w-full max-w-none py-3;
+  }
 }
 
 .form-group.radio {
