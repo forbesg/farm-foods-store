@@ -36,6 +36,15 @@
               autocomplete="current-password"
             />
           </div>
+          <div class="text-right">
+            <a
+              href="#"
+              class="font-bold text-xs text-orange"
+              @click.prevent="showForgottenPasswordPanel = true"
+              >Forgotten Your Password?</a
+            >
+          </div>
+
           <div class="form-group green-label-submit">
             <button type="submit" :class="[{ loading: loading }]" class="mr-0">
               Login
@@ -51,6 +60,54 @@
             >
           </div>
         </form>
+      </div>
+      <div class="panel-wrapper">
+        <transition name="slideInUp">
+          <div
+            v-if="showForgottenPasswordPanel"
+            class="forgotten-password-panel fixed md:relative inset-0 top-auto w-auto sm:max-w-lg mx-auto bg-white h-auto p-6 sm:p-12 z-90"
+          >
+            <button
+              type="button"
+              name="button"
+              class="text absolute top-2 right-2"
+              @click="showForgottenPasswordPanel = false"
+            >
+              <img src="~assets/icons/close.svg" alt="Close" />
+            </button>
+            <p class="font-display font-semibold text-lg mb-4">
+              Forgotten your password?
+            </p>
+            <p class="mb-4 text-sm">
+              Enter your email click on the link below and we will email you a
+              link to reset your password.
+            </p>
+            <div class="form-group">
+              <label for="reset-email">Enter your Email:</label>
+              <input
+                id="reset-email"
+                type="email"
+                name=""
+                autocomplete="email"
+                v-model="resetEmail"
+                class="border border-orange-200"
+              />
+            </div>
+            <div class="text-right">
+              <!-- <a href="#" class="text-orange font-bold"
+                >Send password reset email</a
+              > -->
+              <button
+                type="button"
+                name="button"
+                class=""
+                @click="handleResetEmail"
+              >
+                Send password reset email
+              </button>
+            </div>
+          </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -98,6 +155,8 @@ export default {
       },
       error: '',
       loading: false,
+      showForgottenPasswordPanel: false,
+      resetEmail: '',
     }
   },
   head() {
@@ -175,8 +234,17 @@ export default {
       )
       this.$router.push('/account')
     },
+    async handleResetEmail() {
+      await console.log(this.resetEmail)
+    },
   },
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.panel-wrapper {
+  @screen md {
+    perspective: 800px;
+  }
+}
+</style>
