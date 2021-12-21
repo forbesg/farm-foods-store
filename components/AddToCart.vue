@@ -17,8 +17,8 @@
           :for="variant.node.title.split(' ').join('-').toLowerCase()"
           class="pl-4"
           >{{ variant.node.title }} -
-          <span class="text-sm text-gray-700"
-            >{{ variant.node.priceV2.amount | currency }} each</span
+          <span class="text-sm text-gray-700 ml-1">
+            {{ variant.node.priceV2.amount | currency }} each</span
           ></label
         >
       </div>
