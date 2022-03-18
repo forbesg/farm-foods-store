@@ -158,7 +158,7 @@ export default {
   overflow-y: scroll;
   &::-webkit-scrollbar {
     background-color: green;
-    @apply bg-green-100 w-1;
+    @apply bg-orange-50 w-1;
   }
   &::-webkit-scrollbar-thumb {
     @apply bg-orange w-1 rounded;

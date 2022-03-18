@@ -86,10 +86,10 @@
               <label for="reset-email">Enter your Email:</label>
               <input
                 id="reset-email"
+                v-model="resetEmail"
                 type="email"
                 name=""
                 autocomplete="email"
-                v-model="resetEmail"
                 class="border border-orange-200"
               />
             </div>

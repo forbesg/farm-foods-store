@@ -45,12 +45,12 @@ a.brand:hover:after {
 
 button,
 a.button {
-  @apply relative inline-block text-center bg-gradient-to-b from-orange-500 to-orange-400 text-sm font-bold max-w-max py-2 px-4 transition-all duration-200 overflow-hidden;
+  @apply relative inline-block text-center bg-gradient-to-b from-orange-500 to-orange-400 text-sm font-bold max-w-max py-2 px-4 transition-all duration-200 overflow-hidden rounded-full;
   touch-action: manipulation;
 }
 button:hover,
 a.button:hover {
-  @apply to-orange-500 shadow-md;
+  @apply bg-orange-500 shadow-md;
 }
 button:active,
 a.button:active {
@@ -63,6 +63,10 @@ a.button.full-width {
 button.text,
 a.button.text {
   @apply bg-none shadow-none;
+
+  &:hover {
+    @apply bg-transparent;
+  }
 }
 button.text.loading,
 a.button.text.loading {

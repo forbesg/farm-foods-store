@@ -10,11 +10,18 @@
         :class="[{ loaded: imageLoaded }]"
         @load="handleImageLoad"
       />
-      <button
+      <!-- <button
         class="quick-view absolute right-0 bottom-0"
         @click="$store.dispatch('setQuickViewProduct', product)"
       >
         <img src="~assets/icons/add.svg" alt="Quick Add" />
+      </button> -->
+      <button
+        class="quick-view-button"
+        @click="$store.dispatch('setQuickViewProduct', product)"
+      >
+        <img src="~assets/icons/add.svg" alt="Quick Add" class="h-4 w-4" />
+        Quick Add
       </button>
     </div>
     <div class="text-container">
@@ -56,3 +63,12 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+button,
+.button {
+  &.quick-view-button {
+    @apply absolute bottom-0 right-0 flex items-center bg-none bg-white bg-opacity-75 border border-orange border-opacity-50 text-sm transform -translate-x-2 -translate-y-2;
+  }
+}
+</style>

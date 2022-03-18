@@ -7,6 +7,25 @@ form {
       @apply p-12;
     }
   }
+  &.horizontal {
+    @apply flex flex-wrap max-w-full -mx-1;
+    @screen md {
+      @apply flex-nowrap;
+    }
+    > .form-group {
+      @apply flex-none flex-nowrap w-full mx-1;
+
+      &:last-child {
+        @apply flex-1;
+      }
+      @screen md {
+        @apply flex-1 w-auto;
+        &:last-child {
+          @apply flex-none;
+        }
+      }
+    }
+  }
 }
 select {
   @apply border-orange-100 rounded-full;
@@ -88,6 +107,10 @@ select {
 .form-group .quantity-input-wrapper input[type='number']:focus {
   @apply bg-gray-100 outline-none;
 }
+.form-group .quantity-input-wrapper button {
+  @apply rounded-none;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

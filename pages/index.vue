@@ -109,10 +109,33 @@
         </div>
       </div>
     </section>
-    <section>
-      <pre>
-        {{ collections }}
-      </pre>
+    <section class="bg-orange-400 py-24">
+      <div class="container">
+        <h2 class="font-display font-semibold text-3xl mb-6">
+          Subscribe To Newletter
+        </h2>
+        <p>
+          Get news, updates and offers sent directly to your inbox. Enter your
+          details below to subscribe to our newsletter
+        </p>
+        <form
+          method="post"
+          class="horizontal bg-orange-100 bg-opacity-50 p-10 px-6 pb-6 sm:px-12 w-full max-w-screen rounded my-12 mx-auto"
+          @submit.prevent="handleSubmitNewsletter"
+        >
+          <div class="form-group green-label">
+            <label for="name">Name</label>
+            <input type="text" name="name" value="" />
+          </div>
+          <div class="form-group green-label">
+            <label for="email">Email</label>
+            <input type="email" name="email" value="" />
+          </div>
+          <div class="form-group green-label">
+            <button type="submit" name="button">Submit</button>
+          </div>
+        </form>
+      </div>
     </section>
   </div>
 </template>
@@ -151,6 +174,7 @@ export default {
           rel: 'preload',
           as: 'image',
           href: `${this.$config.hostname}/food-banner.jpg`,
+          type: 'image/jpg',
         },
       ],
     }
@@ -160,6 +184,9 @@ export default {
       return this.$store.getters.featuredProducts
     },
   },
+  methods: {
+    handleSubmitNewsletter() {},
+  },
 }
 </script>
 
@@ -168,10 +195,6 @@ export default {
   text-shadow: 0.035em 0.035em 0 #000;
 }
 .hero {
-  // background-image: url(/food-banner.jpg);
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // background-position: center;
   min-height: calc(100vh - var(--header-height));
   > .hero-image {
     min-height: calc(100vh - var(--header-height));
